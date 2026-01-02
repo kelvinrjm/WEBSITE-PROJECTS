@@ -1,0 +1,107 @@
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,Arial;}
+body{background:#faf7f8;color:#222;}
+
+.navbar{
+  background:#000;color:#fff;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 18px;position:fixed;top:0;width:100%;z-index:1000;
+}
+
+.title-box{display:flex;align-items:center;gap:10px;}
+.logo-img{width:46px;}
+.logo{font-size:18px;font-weight:700;}
+
+.desktop-menu{display:none;gap:18px;}
+.desktop-menu a{color:#fff;text-decoration:none;}
+
+.hamburger{font-size:28px;font-weight:900;cursor:pointer;display:block;}
+
+.nav-links{
+  position:fixed;top:60px;left:-240px;width:220px;height:100vh;
+  background:#111;display:flex;flex-direction:column;
+  transition:.35s;padding-top:20px;
+}
+.nav-links a{color:#fff;padding:12px 20px;text-decoration:none;}
+.nav-links.show{left:0;}
+
+.hero{height:70vh;margin-top:70px;
+  background:url("BG.jpg") center/cover no-repeat;
+  display:flex;justify-content:center;align-items:center;position:relative;
+}
+.hero::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.55);}
+.hero-content{position:relative;text-align:center;}
+.hero-content h2{color:#fff;font-size:22px;}
+
+.section-title{text-align:center;margin:25px 0;font-size:22px;}
+.products{padding:40px 20px;text-align:center;}
+
+.product-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;max-width:900px;margin:auto;
+}
+
+.product-card{
+  background:#fff;border-radius:14px;padding:14px;
+  box-shadow:0 8px 20px rgba(0,0,0,.12);
+}
+
+/* normal product images */
+.product-card img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+/* ⭐ IMPORTANT FIX — do NOT crop slider images */
+.product-card .prod-slider img{
+  height:auto;
+  object-fit:cover;
+}
+
+.trust-box{background:#f2ecf3;padding:28px 0;font-weight:600;text-align:center;}
+.footer{background:#000;color:#fff;text-align:center;padding:14px 0;margin-top:20px;}
+
+/* ---- Desktop vs Mobile Menu ---- */
+@media (min-width:768px){
+  .desktop-menu{display:flex;}
+  .hamburger{display:none;}
+}
+@media (max-width:767px){
+  .desktop-menu{display:none;}
+  .hamburger{display:block;}
+}
+/* ⭐ Mobile fixes — small phones */
+@media screen and (max-width: 450px){
+
+  body{
+    font-size: 14px;
+  }
+
+  .products{
+    padding: 20px 12px;
+  }
+
+  .product-card{
+    padding: 12px;
+  }
+
+  /* Slider fits full width on mobile */
+  .prod-slider{
+    width:100%;
+  }
+
+  .p-slides img{
+    height:220px;
+  }
+
+  /* Show hamburger on mobile */
+  .hamburger{
+    display:block;
+  }
+
+  .desktop-menu{
+    display:none;
+  }
+}
+

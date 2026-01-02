@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products — ESWAR</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="product slider.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+  <div class="title-box">
+    <img src="logo.png" class="logo-img">
+    <h1 class="logo">ESWAR COTTAGE INDUSTRIES</h1>
+  </div>
+
+  <nav class="desktop-menu">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <nav id="menu" class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+
+<section class="products" style="margin-top:90px">
+  <h2 class="section-title">Our Product Collection</h2>
+
+  <div class="product-grid">
+
+    <!-- PRODUCT 1 -->
+    <div class="product-card">
+      <div class="prod-slider" data-index="0">
+        <div class="p-slides">
+          <img src="img1.jpeg" onclick="openPreview(this.src)">
+          <img src="img2.jpeg" onclick="openPreview(this.src)">
+          <img src="img3.jpeg" onclick="openPreview(this.src)">
+          <img src="1.jpeg" onclick="openPreview(this.src)">
+        </div>
+
+        <button class="p-btn left" onclick="prevProd(this)">‹</button>
+        <button class="p-btn right" onclick="nextProd(this)">›</button>
+      </div>
+
+      <h3>Premium Garland — kelvin001</h3>
+    </div>
+
+
+    <!-- PRODUCT 2 -->
+    <div class="product-card">
+      <div class="prod-slider" data-index="0">
+        <div class="p-slides">
+          <img src="1.2.jpeg" onclick="openPreview(this.src)">
+          <img src="2.2.jpeg" onclick="openPreview(this.src)">
+          <img src="2.2.jpeg" onclick="openPreview(this.src)">
+          <img src="1.2.jpeg" onclick="openPreview(this.src)">
+        </div>
+
+        <button class="p-btn left" onclick="prevProd(this)">‹</button>
+        <button class="p-btn right" onclick="nextProd(this)">›</button>
+      </div>
+
+      <h3>Wedding Bouquet — kelvin001</h3>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- IMAGE PREVIEW -->
+<div id="previewBox">
+  <img id="previewImg">
+</div>
+
+<footer class="footer">
+  © 2025 Kelvin001 — Premium Floral Studio
+</footer>
+
+<script src="menu.js"></script>
+<script src="product slider.js"></script>
+
+</body>
+</html>
