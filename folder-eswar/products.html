@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products — ESWAR</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="products.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+  <div class="title-box">
+    <img src="logo.png" class="logo-img">
+    <h1 class="logo">ESWAR COTTAGE INDUSTRIES</h1>
+  </div>
+
+  <nav class="desktop-menu">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <nav id="menu" class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+
+<section class="products" style="margin-top:90px">
+  <h2 class="section-title">Our Product Collection</h2>
+
+  <div class="product-grid">
+
+    <div class="product-card">
+      <img src="10.jpg" onclick="openPreview(this.src)">
+      <h3>சாம்பிராணி STAND</h3>
+    </div>
+
+    <div class="product-card">
+      <img src="2.jpg" onclick="openPreview(this.src)">
+      <h3>size: ALL SIZE</h3>
+    </div>
+
+    <div class="product-card">
+      <img src="3.png" onclick="openPreview(this.src)">
+      <h3>size: ALL SIZE</h3>
+      <h5>[ With Tin]</h5>
+    </div>
+
+    <div class="product-card">
+      <img src="5.jpg" onclick="openPreview(this.src)">
+      <h3>size: ALL SIZE</h3>
+    </div>
+
+    <div class="product-card">
+      <img src="9.jpg" onclick="openPreview(this.src)">
+      <h3>size: ALL SIZE</h3>
+    </div>
+
+    <div class="product-card">
+      <img src="4.jpg" onclick="openPreview(this.src)">
+      <h3>size: ALL SIZE</h3>
+    </div>
+
+    <div class="product-card">
+      <img src="img4.jpeg" onclick="openPreview(this.src)">
+      <h3>size: ALL SIZE</h3>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- IMAGE PREVIEW -->
+<div id="previewBox" onclick="closePreview()">
+  <img id="previewImg">
+</div>
+
+<footer class="footer">
+  @ cottage-industry VIRUDHUNAGAR-626 001
+</footer>
+
+<script src="menu.js"></script>
+<script src="preview.js"></script>
+</body>
+</html>

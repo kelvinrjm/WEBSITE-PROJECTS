@@ -1,0 +1,43 @@
+.about-section{
+  margin-top:100px;
+  max-width:1000px;
+  margin:auto;
+  padding:10px;
+}
+
+.row{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  margin:25px 0;
+}
+
+.row img{
+  width:260px;
+  border-radius:14px;
+}
+
+.text-box{
+  flex:1;
+  font-size:18px;
+  line-height:1.6;
+}
+
+.row.reverse{
+  flex-direction:row-reverse;
+}
+
+@media (max-width:768px){
+  .row,
+  .row.reverse{
+    flex-direction:column;
+    text-align:center;
+  }
+}
+.row a{
+  display:block;
+}
+
+.row a img{
+  cursor:pointer;
+}
