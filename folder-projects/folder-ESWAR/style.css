@@ -37,7 +37,7 @@ body{
   text-decoration: none;
   width:200px;
   padding:10px;
-  margin-top:10px
+  margin-top:10px;
   margin-left:105px;
   border-radius: 10px; 
 }
@@ -185,6 +185,7 @@ body{
   from{opacity:0; transform:translateY(-30px);}
   to{opacity:1; transform:translateY(0);}
 }
+
 
 
 
