@@ -23,7 +23,6 @@ body{
   width:100%;
   z-index:1000;
 }
-
 .title-box{display:flex;align-items:center;gap:10px;}
 .logo-img{width:46px;}
 .logo{font-size:18px;font-weight:700;}
@@ -32,7 +31,11 @@ body{
 .desktop-menu a{color:#fff;text-decoration:none;}
 
 .hamburger{font-size:28px;font-weight:900;cursor:pointer;display:block;}
-
+.product-card h1 {
+  background-color:#333;
+  color:#f5f5f5;
+  text-decoration: none;
+}
 /* MOBILE MENU */
 .nav-links{
   position:fixed;
@@ -177,4 +180,5 @@ body{
   from{opacity:0; transform:translateY(-30px);}
   to{opacity:1; transform:translateY(0);}
 }
+
 
