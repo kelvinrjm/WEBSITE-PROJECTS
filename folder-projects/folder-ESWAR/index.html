@@ -1,281 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - ESWAR COTTAGE INDUSTRIES</title>
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Poppins, Arial;
-    }
- 
-    body {
-      background: #faf7f8;
-      color: #222;
-    }
-
-    /* NAVBAR */
-    .navbar {
-      background: #000;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 18px;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-
-    .title-box {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-img {
-      width: 46px;
-    }
-
-    .logo {
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    .desktop-menu {
-      display: none;
-      gap: 18px;
-    }
-
-    .desktop-menu a {
-      color: #fff;
-      text-decoration: none;
-    }
-
-    .hamburger {
-      font-size: 28px;
-      font-weight: 900;
-      cursor: pointer;
-    }
-
-    .nav-links {
-      position: fixed;
-      top: 60px;
-      left: -240px;
-      width: 220px;
-      height: 100vh;
-      background: #111;
-      display: flex;
-      flex-direction: column;
-      transition: .35s;
-      z-index: 999;
-    }
-
-    .nav-links a {
-      color: #fff;
-      padding: 12px 20px;
-      text-decoration: none;
-      border-bottom: 1px solid #333;
-    }
-
-    .nav-links.show {
-      left: 0
-    }
-
-    /* CONTACT */
-    .products {
-      padding: 40px 20px;
-      text-align: center;
-      margin-top: 90px;
-    }
-
-    .section-title {
-      font-size: 26px;
-      margin-bottom: 25px;
-      animation: fadeDown 1s ease;
-    }
-
-    .products img {
-      width: 100%;
-      max-width: 460px;
-      border-radius: 14px;
-      margin: 15px auto;
-      display: block;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, .1);
-      animation: fadeUp 1.2s ease;
-    }
-
-    .products p {
-      font-size: 16px;
-      line-height: 1.8;
-      width: 500px;
-      margin-left: 480px;
-      animation: fadeUp 1.5s ease;
-    }
-
-    table {
-      margin-left: 530px;
-      width: 400px
-    }
-
-    table tr td {
-      line-height: 1.8;
-      padding: 10px;
-    }
-
-    /* ICON STYLE */
-    .products table tr td i {
-      margin-right: 10px;
-      font-size: 18px;
-    }
-
-    /* FOOTER */
-    .footer {
-      background: #000;
-      color: #fff;
-      text-align: center;
-      padding: 16px;
-      margin-top: 40px;
-    }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* DESKTOP */
-    @media(min-width:768px) {
-      .desktop-menu {
-        display: flex;
-      }
-
-      .hamburger {
-        display: none;
-      }
-
-      .nav-links {
-        display: none !important;
-      }
-    }
-
-    @media(max-width:450px) {
-      .nav-links {
-        height: 410px;
-      }
-
-      .section-title {
-        margin-left: 175px;
-      }
-
-      .products img {
-        margin: 15px 100px;
-      }
-
-      table {
-        margin-left: 80px;
-      }
-
-      .products p {
-        margin-left: 30px;
-
-      }
-
-      .footer {
-        width: 550px;
-        z-index: 1000 !important;
-      }
-
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home — ESWAR COTTAGE INDUSTRIES</title>
+<link rel="icon" href="logo.jpeg">
+<link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
-  <header class="navbar">
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
+<header class="navbar">
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
 
-    <div class="title-box">
-      <img src="logo.jpeg" class="logo-img">
-      <h1 class="logo">ESWAR COTTAGE INDUSTRIES</h1>
+  <div class="title-box">
+    <img src="logo.jpeg" class="logo-img">
+    <h1 class="logo">ESWAR COTTAGE INDUSTRIES</h1>
+  </div>
+
+  <nav class="desktop-menu">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <nav id="menu" class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero fade-up">
+  <div class="hero-content">
+    <h2 class="fade-down">Elegance • Love • Moments You’ll Remember Forever</h2>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="products">
+  <h2 class="section-title fade-down">TRUST US WITH YOUR HOPE</h2>
+
+  <div class="product-grid fade-up">
+    <div class="product-card">
+      <a href="about.html">
+        <img src="1.jpg">
+        <h3>COMPANY</h3>
+      </a>
     </div>
 
-    <nav class="desktop-menu">
-      <a href="index.html">Home</a>
-      <a href="products.html">Products</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <div class="product-card">
+      <a href="products.html">
+        <img src="whole.png">
+        <h3>PRODUCTS</h3>
+      </a>
+    </div>
+  </div>
+</section>
 
-    <nav id="menu" class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="products.html">Products</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+<section class="trust-box">
+  YOUR TRUST OUR WORK
+</section>
 
-  <section class="products">
-    <h2 class="section-title">Contact Us</h2>
+<footer class="footer">
+  @ cottage-industry VIRUDHUNAGAR-626 001
+</footer>
 
-    <img src="visitingcard.png" alt="Business Card">
+<script>
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("show");
+}
+</script>
 
-
-    <table>
-      <tr>
-        <td><i class="fa-solid fa-phone" style="color:#333;"></i>+91 99448 18061</td>
-      </tr>
-      <tr>
-        <td><i class="fa-solid fa-envelope" style="color:#333;"></i> eswarind77@gmail.com</td>
-      </tr>
-      <tr>
-        <td><i class="fa-solid fa-location-dot" style="color:#333;"></i>
-          3/78, Anna New Street, Allampatti <br>
-          Virudhunagar – 626 001.</td>
-      </tr>
-    </table>
-
-    <p>
-      || TRUST US WITH YOUR HEART ||
-    </p>
-  </section>
-
-  <footer class="footer">
-    @ cottage-industry VIRUDHUNAGAR-626 001
-  </footer>
-
-  <script>
-    function toggleMenu() {
-      document.getElementById("menu").classList.toggle("show");
-    }
-  </script>
 </body>
-
 </html>
-
-
