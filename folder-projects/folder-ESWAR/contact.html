@@ -2,228 +2,362 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - ESWAR COTTAGE INDUSTRIES</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Custom styles for the arranged contact section */
-        .contact-arranged-section {
-            padding: 80px 0;
-            background-color: #faf7f8;
-        }
-
-        .contact-card-img { 
-            width: 100%;
-            max-width: 500px;
-            border-radius: 12px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            display: block;
-            margin: 0 auto;
-        }
-
-        .contact-card-img:hover {
-            transform: translateY(-5px);
-        }
-
-        .contact-details-container {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-left: 50px;
-        }
-
-        .contact-row {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
-            font-size: 1.1rem;
-            color: #333;
-        }
-
-        .contact-icon-wrapper {
-            width: 40px;
-            color: #333;
-            font-size: 1.2rem;
-            margin-top: 3px;
-        }
-
-        .contact-text {
-            flex: 1;
-            font-weight: 400;
-        }
-
-        .tagline-box {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            font-weight: 600;
-            letter-spacing: 2px;
-            color: #555;
-            text-transform: uppercase;
-        }
-
-        @media (max-width: 991px) {
-            .contact-details-container {
-                padding-left: 0;
-                padding-top: 50px;
-                align-items: center;
-                text-align: center;
-            }
-            .contact-row {
-                justify-content: center;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - ESWAR COTTAGE INDUSTRIES</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <!-- Page Loader -->
-    <div id="loader-wrapper">
-        <div id="loader"></div>
-        <div class="loader-section section-left"></div>
-        <div class="loader-section section-right"></div>
+  <div id="loader-wrapper">
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Contact — ESWAR</title>
+      <link rel="icon" type="image/png" href="logo.jpeg">
+
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: Poppins, Arial;
+        }
+
+        body {
+          background: #faf7f8;
+          color: #222;
+        }
+
+        /* NAVBAR */
+        .navbar {
+          background: #000;
+          color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 12px 18px;
+          position: fixed;
+          top: 0;
+          width: 100%;
+          z-index: 1000;
+        }
+
+        .title-box {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .logo-img {
+          width: 46px;
+        }
+
+        .logo {
+          font-size: 18px;
+          font-weight: 700;
+        }
+
+        .desktop-menu {
+          display: none;
+          gap: 18px;
+        }
+
+        .desktop-menu a {
+          color: #fff;
+          text-decoration: none;
+        }
+
+        .hamburger {
+          font-size: 28px;
+          font-weight: 900;
+          cursor: pointer;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 60px;
+          left: -240px;
+          width: 220px;
+          height: calc(100vh - 60px);
+          background: #111;
+          display: flex;
+          flex-direction: column;
+          transition: .35s;
+          z-index: 999;
+        }
+
+        .nav-links a {
+          color: #fff;
+          padding: 12px 20px;
+          text-decoration: none;
+          border-bottom: 1px solid #333;
+        }
+
+        .nav-links.show {
+          left: 0
+        }
+
+        /* CONTACT */
+        .products {
+          padding: 40px 20px;
+          text-align: center;
+          margin-top: 90px;
+        }
+
+        .section-title {
+          font-size: 26px;
+          margin-bottom: 25px;
+          animation: fadeDown 1s ease;
+        }
+
+        .products img {
+          width: 100%;
+          max-width: 460px;
+          border-radius: 14px;
+          margin: 15px auto;
+          display: block;
+          box-shadow: 0 6px 16px rgba(0, 0, 0, .1);
+          animation: fadeUp 1.2s ease;
+        }
+
+        .products p {
+          font-size: 16px;
+          line-height: 1.8;
+          max-width: 500px;
+          margin-left: 480px;
+          animation: fadeUp 1.5s ease;
+        }
+
+        table {
+          margin-left: 580px;
+        }
+
+        table tr td {
+          line-height: 1.8;
+          padding: 10px;
+        }
+
+        /* ICON STYLE */
+        .products table tr td i {
+          margin-right: 10px;
+          font-size: 18px;
+        }
+
+        /* FOOTER */
+        .footer {
+          background: #000;
+          color: #fff;
+          text-align: center;
+          padding: 16px;
+          margin-top: 40px;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeDown {
+          from {
+            opacity: 0;
+            transform: translateY(-30px);
+          }
+
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        /* DESKTOP */
+        @media(min-width:768px) {
+          .desktop-menu {
+            display: flex;
+          }
+
+          .hamburger {
+            display: none;
+          }
+
+          .nav-links {
+            display: none !important;
+          }
+        }
+      </style>
+    </head>
+
+    <body>
+
+      <header class="navbar">
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+        <div class="title-box">
+          <img src="logo.jpeg" class="logo-img">
+          <h1 class="logo">ESWAR COTTAGE INDUSTRIES</h1>
+        </div>
+
+        <nav class="desktop-menu">
+          <a href="index.html">Home</a>
+          <a href="products.html">Products</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <nav id="menu" class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="products.html">Products</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </header>
+
+      <section class="products">
+        <h2 class="section-title">Contact Us</h2>
+
+        <img src="visitingcard.png" alt="Business Card">
+
+
+        <table>
+          <tr>
+            <td><i class="fa-solid fa-phone" style="color:#333;"></i>+91 99448 18061</td>
+          </tr>
+          <tr>
+            <td><i class="fa-solid fa-envelope" style="color:#333;"></i> eswarind77@gmail.com</td>
+          </tr>
+          <tr>
+            <td><i class="fa-solid fa-location-dot" style="color:#333;"></i>
+              3/78, Anna New Street, Allampatti <br>
+              Virudhunagar – 626 001.</td>
+          </tr>
+        </table>
+
+        <p>
+          || TRUST US WITH YOUR HEART ||
+        </p>
+      </section>
+
+      <footer class="footer">
+        @ cottage-industry VIRUDHUNAGAR-626 001
+      </footer>
+
+      <script>
+        function toggleMenu() {
+          document.getElementById("menu").classList.toggle("show");
+        }
+      </script>
+
+    </body>
+
+    </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img src="img/logo.png" alt="Logo" style="height: 40px; margin-right: 10px;">
+        Eswar Cottage Industries
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link nav-link-1" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-2" href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-3" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-4 active" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="img/logo.png" alt="Logo" style="height: 40px; margin-right: 10px;" onerror="this.style.display='none';">
-                 Eswar Cottage Industries
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link nav-link-1" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-link-2" href="products.html">Products</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-link-3" href="about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-link-4 active" href="contact.html">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <div class="tm-hero d-flex justify-content-center align-items-center" data-image-src="img/hero.jpeg" style="min-height: 300px;">
-        <div class="tm-hero-text text-center text-white">
-            <h1 class="mb-0">Contact Us</h1>
-        </div>
+  <div class="tm-hero d-flex justify-content-center align-items-center" data-image-src="img/hero.jpeg"
+    style="min-height: 250px;">
+    <div class="tm-hero-text text-center text-white">
+      <h1 class="mb-4">Contact Us</h1>
     </div>
+  </div>
 
-    <!-- Main Content -->
-    <div class="contact-arranged-section">
-        <div class="container">
-            <div class="row align-items-center">
-                
-                <!-- Card Image -->
-                <div class="col-lg-6">
-                    <img src="img/visitingcard.png" alt="Visiting Card" class="contact-card-img">
-                </div>
+  <div class="container tm-container-content tm-mt-60 tm-mb-90">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-12 text-center">
+        <div class="card border-0 shadow-lg p-4">
+          <div class="card-body">
+            <img src="img/visitingcard.png" alt="Visiting Card" class="img-fluid rounded mb-4"
+              style="max-width: 500px;">
 
-                <!-- Contact Details -->
-                <div class="col-lg-6">
-                    <div class="contact-details-container">
-                        
-                        <!-- Phone -->
-                        <div class="contact-row">
-                            <div class="contact-icon-wrapper">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                +91 99448 18061
-                            </div>
-                        </div>
+            <div class="contact-info mt-4">
+              <h3 class="mb-3 tm-text-primary"><i class="fas fa-phone me-2"></i> Call Us</h3>
+              <p class="lead text-dark font-weight-bold">+91 99448 18061</p>
 
-                        <!-- Email -->
-                        <div class="contact-row">
-                            <div class="contact-icon-wrapper">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                eswarind77@gmail.com
-                            </div>
-                        </div>
+              <h3 class="mt-4 mb-3 tm-text-primary"><i class="fas fa-envelope me-2"></i> Email</h3>
+              <p class="lead">eswarind77@gmail.com</p>
 
-                        <!-- Address -->
-                        <div class="contact-row">
-                            <div class="contact-icon-wrapper">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                3/78, Anna New Street, Allampatti<br>
-                                Virudhunagar – 626 001.
-                            </div>
-                        </div>
+              <h3 class="mt-4 mb-3 tm-text-primary"><i class="fas fa-map-marker-alt me-2"></i> Visit Us</h3>
+              <p class="lead">3/78, Anna New Street, Allampatti<br>Virudhunagar – 626 001</p>
 
-                        <!-- Tagline -->
-                        <div class="tagline-box">
-                            || TRUST US WITH YOUR HEART ||
-                        </div>
-
-                    </div>
-                </div>
-
+              <hr class="my-4">
+              <p class="tm-text-primary font-italic" style="letter-spacing: 2px; font-weight: 600;">|| TRUST US WITH
+                YOUR HEART ||</p>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
-    <!-- Footer -->
-    <footer class="tm-bg-gray pt-5 pb-3 tm-text-gray tm-footer">
-        <div class="container-fluid tm-container-small">
-            <div class="row">
-                <div class="col-lg-6 col-md-12 col-12 px-5 mb-5">
-                    <h3 class="tm-text-primary mb-4 tm-footer-title">Eswar Cottage Industries</h3>
-                    <p>We craft premium floral & cottage-industry creations with love, passion, and trust for every special moment. Virudhunagar-626 001.</p>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12 px-5 mb-5">
-                    <h3 class="tm-text-primary mb-4 tm-footer-title">Links</h3>
-                    <ul class="tm-footer-links pl-0">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12 px-5 mb-5">
-                    <ul class="tm-social-links d-flex justify-content-end pl-0 mb-5">
-                        <li class="mb-2"><a href="#"><i class="fab fa-facebook"></i></a></li>
-                        <li class="mb-2"><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    </ul>
-                    <a href="#" class="tm-text-gray text-right d-block mb-2">Terms of Use</a>
-                    <a href="#" class="tm-text-gray text-right d-block">Privacy Policy</a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 col-md-7 col-12 px-5 mb-3">
-                    Copyright 2024 Eswar Cottage Industries. All rights reserved.
-                </div>
-            </div>
+  <footer class="tm-bg-gray pt-5 pb-3 tm-text-gray tm-footer">
+    <div class="container-fluid tm-container-small">
+      <div class="row">
+        <div class="col-lg-8 col-md-7 col-12 px-5 mb-3">
+          Copyright 2024 Eswar Cottage Industries. All rights reserved.
         </div>
-    </footer>
+      </div>
+    </div>
+  </footer>
 
-    <script src="js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        window.addEventListener('load', function () {
-            document.body.classList.add('loaded');
-        });
-    </script>
+  <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      document.body.classList.add('loaded');
+    });
+  </script>
 </body>
 
 </html>
-
