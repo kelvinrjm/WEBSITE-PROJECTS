@@ -11,11 +11,6 @@ color:white;
 padding:20px;
 }
 
-header h3{
-margin-top:5px;
-font-weight:normal;
-}
-
 .container{
 max-width:420px;
 margin:auto;
@@ -42,20 +37,28 @@ background:#007bff;
 color:white;
 }
 
-button:hover{
-opacity:0.9;
-}
-
 .sos{
 background:red;
 font-weight:bold;
 }
 
-.dark{
-background:#121212;
+#sosScreen{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:red;
 color:white;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+font-size:30px;
 }
 
-.dark .card{
-background:#1e1e1e;
+#sosScreen button{
+background:black;
+color:white;
+width:200px;
 }
