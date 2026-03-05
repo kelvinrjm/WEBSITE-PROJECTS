@@ -19,13 +19,13 @@ document.getElementById("mapFrame").src=map;
 function shareLocation(){
 
 if(!lat){
-alert("Get location first");
+alert("Please detect location first");
 return;
 }
 
 let link="https://maps.google.com/?q="+lat+","+lon;
 
-let message="My location: "+link;
+let message="EMERGENCY! My location: "+link;
 
 window.location.href="sms:9943366440?body="+encodeURIComponent(message);
 
@@ -65,7 +65,6 @@ document.body.classList.toggle("dark");
 /* SHAKE PHONE SOS */
 
 let shakeThreshold=15;
-
 let lastX,lastY,lastZ;
 
 window.addEventListener("devicemotion",function(e){
