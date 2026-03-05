@@ -37,28 +37,30 @@ background:#007bff;
 color:white;
 }
 
+button:hover{
+opacity:0.9;
+}
+
 .sos{
 background:red;
 font-weight:bold;
 }
 
-#sosScreen{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:red;
-color:white;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-font-size:30px;
+.info{
+font-size:13px;
+color:#555;
+margin-bottom:10px;
 }
 
-#sosScreen button{
-background:black;
+.dark{
+background:#121212;
 color:white;
-width:200px;
+}
+
+.dark .card{
+background:#1e1e1e;
+}
+
+.dark .info{
+color:#ccc;
 }
