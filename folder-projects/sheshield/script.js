@@ -50,16 +50,17 @@ window.open(url,"_blank");
 
 function sendSOS(){
 
-document.getElementById("alarm").play();
+let alarm = document.getElementById("alarm");
 
-alert("🚨 SOS ACTIVATED");
+alarm.currentTime = 0;
+alarm.play();
+
+alert("🚨 SOS ACTIVATED! HELP NEEDED!");
 
 }
 
 function toggleDark(){
-
 document.body.classList.toggle("dark");
-
 }
 
 /* SHAKE PHONE SOS */
