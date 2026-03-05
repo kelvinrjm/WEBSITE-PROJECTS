@@ -25,9 +25,9 @@ return;
 
 let link="https://maps.google.com/?q="+lat+","+lon;
 
-navigator.clipboard.writeText(link);
+let message="My location: "+link;
 
-alert("Location copied. Send to family.");
+window.location.href="sms:9943366440?body="+encodeURIComponent(message);
 
 }
 
@@ -53,14 +53,6 @@ function sendSOS(){
 document.getElementById("alarm").play();
 
 alert("🚨 SOS ACTIVATED");
-
-}
-
-function fakeCall(){
-
-alert("Incoming call from Mom...");
-
-window.location.href="tel:0000000000";
 
 }
 
