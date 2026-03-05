@@ -19,26 +19,20 @@ document.getElementById("mapFrame").src=map;
 function shareLocation(){
 
 if(!lat){
-alert("Please detect location first");
+alert("Detect location first");
 return;
 }
 
 let link="https://maps.google.com/?q="+lat+","+lon;
 
-let message="EMERGENCY! My location: "+link;
+window.location.href="sms:9943366440?body="+encodeURIComponent("My location: "+link);
 
-window.location.href="sms:9943366440?body="+encodeURIComponent(message);
-
-}
-
-function callHelp(){
-window.location.href="tel:112";
 }
 
 function findPolice(){
 
 if(!lat){
-alert("Get location first");
+alert("Detect location first");
 return;
 }
 
@@ -48,48 +42,18 @@ window.open(url,"_blank");
 
 }
 
-function sendSOS(){
-
-let alarm = document.getElementById("alarm");
-
-alarm.currentTime = 0;
-alarm.play();
-
-alert("🚨 SOS ACTIVATED! HELP NEEDED!");
-
+function callHelp(){
+window.location.href="tel:112";
 }
 
 function toggleDark(){
 document.body.classList.toggle("dark");
 }
 
-/* SHAKE PHONE SOS */
-
-let shakeThreshold=15;
-let lastX,lastY,lastZ;
-
-window.addEventListener("devicemotion",function(e){
-
-let acc=e.accelerationIncludingGravity;
-
-let x=acc.x;
-let y=acc.y;
-let z=acc.z;
-
-if(lastX!==null){
-
-let delta=Math.abs(x+y+z-lastX-lastY-lastZ);
-
-if(delta>shakeThreshold){
-
-sendSOS();
-
+function activateSOS(){
+document.getElementById("sosScreen").style.display="flex";
 }
 
+function closeSOS(){
+document.getElementById("sosScreen").style.display="none";
 }
-
-lastX=x;
-lastY=y;
-lastZ=z;
-
-});
