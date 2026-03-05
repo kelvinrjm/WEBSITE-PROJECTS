@@ -11,6 +11,11 @@ color:white;
 padding:20px;
 }
 
+header h3{
+margin-top:5px;
+font-weight:normal;
+}
+
 .container{
 max-width:420px;
 margin:auto;
@@ -37,13 +42,13 @@ background:#007bff;
 color:white;
 }
 
+button:hover{
+opacity:0.9;
+}
+
 .sos{
 background:red;
 font-weight:bold;
-}
-
-button:hover{
-opacity:0.9;
 }
 
 .dark{
