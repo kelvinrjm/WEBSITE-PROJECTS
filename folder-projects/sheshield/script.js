@@ -3,20 +3,14 @@ let lon;
 
 function getLocation(){
 
-let status=document.getElementById("status");
-
 if(!navigator.geolocation){
-
-status.innerHTML="Geolocation not supported";
+alert("Geolocation not supported");
 return;
-
 }
-
-status.innerHTML="Detecting location...";
 
 navigator.geolocation.getCurrentPosition(success,error,{
 enableHighAccuracy:true,
-timeout:10000,
+timeout:8000,
 maximumAge:0
 });
 
@@ -24,37 +18,33 @@ maximumAge:0
 
 function success(pos){
 
-lat=pos.coords.latitude;
-lon=pos.coords.longitude;
-
-document.getElementById("status").innerHTML="Location detected ✔";
+lat = pos.coords.latitude;
+lon = pos.coords.longitude;
 
 let map="https://maps.google.com/maps?q="+lat+","+lon+"&z=15&output=embed";
 
-document.getElementById("mapFrame").src=map;
+document.getElementById("mapFrame").src = map;
 
 }
 
 function error(err){
 
-let status=document.getElementById("status");
-
 switch(err.code){
 
 case err.PERMISSION_DENIED:
-status.innerHTML="Location permission denied";
+alert("Location permission denied");
 break;
 
 case err.POSITION_UNAVAILABLE:
-status.innerHTML="Location unavailable";
+alert("Location unavailable");
 break;
 
 case err.TIMEOUT:
-status.innerHTML="Location request timed out";
+alert("Location request timed out. Try again.");
 break;
 
 default:
-status.innerHTML="Error detecting location";
+alert("Error detecting location");
 
 }
 
@@ -63,7 +53,7 @@ status.innerHTML="Error detecting location";
 function shareLocation(){
 
 if(!lat){
-alert("Please detect location first");
+alert("Get location first");
 return;
 }
 
@@ -82,7 +72,7 @@ window.location.href="tel:112";
 function findPolice(){
 
 if(!lat){
-alert("Please detect location first");
+alert("Get location first");
 return;
 }
 
@@ -94,24 +84,9 @@ window.open(url,"_blank");
 
 function sendSOS(){
 
-if(!navigator.geolocation){
-alert("Location not supported");
-return;
-}
+document.getElementById("alarm").play();
 
-navigator.geolocation.getCurrentPosition(function(pos){
-
-let lat = pos.coords.latitude;
-let lon = pos.coords.longitude;
-
-let safeRoute =
-"https://www.google.com/maps/search/police+station+or+hospital/@"+lat+","+lon+",14z";
-
-alert("Finding safest nearby place...");
-
-window.open(safeRoute,"_blank");
-
-});
+alert("🚨 SOS ACTIVATED");
 
 }
 
@@ -120,3 +95,35 @@ function toggleDark(){
 document.body.classList.toggle("dark");
 
 }
+
+/* SHAKE PHONE SOS */
+
+let shakeThreshold=15;
+
+let lastX,lastY,lastZ;
+
+window.addEventListener("devicemotion",function(e){
+
+let acc=e.accelerationIncludingGravity;
+
+let x=acc.x;
+let y=acc.y;
+let z=acc.z;
+
+if(lastX!==null){
+
+let delta=Math.abs(x+y+z-lastX-lastY-lastZ);
+
+if(delta>shakeThreshold){
+
+sendSOS();
+
+}
+
+}
+
+lastX=x;
+lastY=y;
+lastZ=z;
+
+});
