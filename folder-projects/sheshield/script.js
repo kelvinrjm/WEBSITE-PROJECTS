@@ -1,12 +1,6 @@
 let lat;
 let lon;
 
-const gpsOptions = {
-enableHighAccuracy: true,
-maximumAge: 10000,
-timeout: 5000
-};
-
 function getLocation(){
 
 navigator.geolocation.getCurrentPosition(function(pos){
@@ -14,13 +8,11 @@ navigator.geolocation.getCurrentPosition(function(pos){
 lat = pos.coords.latitude;
 lon = pos.coords.longitude;
 
-let map = "https://maps.google.com/maps?q=" + lat + "," + lon + "&z=15&output=embed";
+let map="https://maps.google.com/maps?q="+lat+","+lon+"&z=15&output=embed";
 
 document.getElementById("mapFrame").src = map;
 
-}, function(){
-alert("Unable to detect location. Please enable GPS.");
-}, gpsOptions);
+});
 
 }
 
@@ -31,15 +23,14 @@ alert("Please detect location first");
 return;
 }
 
-let link = "https://maps.google.com/?q=" + lat + "," + lon;
+let link="https://maps.google.com/?q="+lat+","+lon;
 
-window.location.href =
-"sms:9943366440?body=" + encodeURIComponent("My location: " + link);
+window.location.href="sms:9943366440?body="+encodeURIComponent("My location: "+link);
 
 }
 
 function callHelp(){
-window.location.href = "tel:112";
+window.location.href="tel:112";
 }
 
 function sendSOS(){
@@ -49,18 +40,14 @@ navigator.geolocation.getCurrentPosition(function(pos){
 lat = pos.coords.latitude;
 lon = pos.coords.longitude;
 
-let route =
-"https://www.google.com/maps/dir/?api=1&origin=" +
-lat + "," + lon +
-"&destination=police+station&travelmode=walking";
+let policeRoute =
+"https://www.google.com/maps/dir/"+lat+","+lon+"/police+station";
 
-alert("SOS Activated. Showing safest and shortest route to nearest police station.");
+alert("SOS Activated. Navigating to nearest police station.");
 
-window.open(route,"_blank");
+window.open(policeRoute,"_blank");
 
-}, function(){
-alert("Unable to detect GPS location.");
-}, gpsOptions);
+});
 
 }
 
