@@ -1,67 +1,47 @@
 let lat;
 let lon;
 
+const gpsOptions = {
+enableHighAccuracy: true,
+maximumAge: 10000,
+timeout: 5000
+};
+
+function updateMap(){
+let map="https://maps.google.com/maps?q="+lat+","+lon+"&z=15&output=embed";
+document.getElementById("mapFrame").src = map;
+}
+
 function getLocation(){
 
-if(!navigator.geolocation){
-alert("Geolocation not supported");
+if(lat && lon){
+updateMap();
 return;
 }
 
-navigator.geolocation.getCurrentPosition(success,error,{
-enableHighAccuracy:true,
-timeout:8000,
-maximumAge:0
-});
-
-}
-
-function success(pos){
+navigator.geolocation.getCurrentPosition(function(pos){
 
 lat = pos.coords.latitude;
 lon = pos.coords.longitude;
 
-let map="https://maps.google.com/maps?q="+lat+","+lon+"&z=15&output=embed";
+updateMap();
 
-document.getElementById("mapFrame").src = map;
-
-}
-
-function error(err){
-
-switch(err.code){
-
-case err.PERMISSION_DENIED:
-alert("Location permission denied");
-break;
-
-case err.POSITION_UNAVAILABLE:
-alert("Location unavailable");
-break;
-
-case err.TIMEOUT:
-alert("Location request timed out. Try again.");
-break;
-
-default:
-alert("Error detecting location");
-
-}
+}, function(){
+alert("Unable to detect location. Please enable GPS.");
+}, gpsOptions);
 
 }
 
 function shareLocation(){
 
 if(!lat){
-alert("Get location first");
+alert("Please detect location first");
 return;
 }
 
 let link="https://maps.google.com/?q="+lat+","+lon;
 
-let message="My location: "+link;
-
-window.location.href="sms:9943366440?body="+encodeURIComponent(message);
+window.location.href="sms:9943366440?body="+encodeURIComponent("My location: "+link);
 
 }
 
@@ -69,61 +49,26 @@ function callHelp(){
 window.location.href="tel:112";
 }
 
-function findPolice(){
-
-if(!lat){
-alert("Get location first");
-return;
-}
-
-let url="https://www.google.com/maps/search/police+station/@"+lat+","+lon+",14z";
-
-window.open(url,"_blank");
-
-}
-
 function sendSOS(){
 
-document.getElementById("alarm").play();
+navigator.geolocation.getCurrentPosition(function(pos){
 
-alert("🚨 SOS ACTIVATED");
+lat = pos.coords.latitude;
+lon = pos.coords.longitude;
+
+let policeRoute =
+"https://www.google.com/maps/dir/"+lat+","+lon+"/police+station";
+
+alert("SOS Activated. Navigating to nearest police station.");
+
+window.open(policeRoute,"_blank");
+
+}, function(){
+alert("Unable to detect GPS location.");
+}, gpsOptions);
 
 }
 
 function toggleDark(){
-
 document.body.classList.toggle("dark");
-
 }
-
-/* SHAKE PHONE SOS */
-
-let shakeThreshold=15;
-
-let lastX,lastY,lastZ;
-
-window.addEventListener("devicemotion",function(e){
-
-let acc=e.accelerationIncludingGravity;
-
-let x=acc.x;
-let y=acc.y;
-let z=acc.z;
-
-if(lastX!==null){
-
-let delta=Math.abs(x+y+z-lastX-lastY-lastZ);
-
-if(delta>shakeThreshold){
-
-sendSOS();
-
-}
-
-}
-
-lastX=x;
-lastY=y;
-lastZ=z;
-
-});
