@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SWF</title>
+<title>SWF Safety For Women</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -16,33 +16,31 @@
 <header>
 <h2>🛡️ SWF</h2>
 <p>Smart Women Safety Framework</p>
-<h3>Be Bold. Face the Fear. Be Strong.</h3>
 </header>
 
 <div class="container">
 
 <div class="card">
 
-<button class="sos" onclick="sendSOS()">🚨 SOS SAFE ROUTE</button>
-<p class="info">Opens Google Maps and shows the fastest route to the nearest police station.</p>
+<button class="sos" onclick="sendSOS()">🚨 SOS ALERT</button>
 
 <button onclick="getLocation()">📍 Detect Location</button>
-<p class="info">Finds your current GPS location and displays it on the map.</p>
 
 <button onclick="shareLocation()">📩 Share Location</button>
-<p class="info">Sends your live location through SMS to AGENCY.</p>
+
+<button onclick="findPolice()">🚓 Nearby Police</button>
 
 <button onclick="callHelp()">☎ Emergency 112</button>
-<p class="info">Directly calls the national emergency helpline number.</p>
 
 <button onclick="toggleDark()">🌙 Dark Mode</button>
-<p class="info">Switches the interface to dark mode for better visibility at night.</p>
+
+<p id="status"></p>
 
 </div>
 
 <div class="card">
 
-<h3>Your Current Location</h3>
+<h3>Live Map</h3>
 
 <iframe id="mapFrame" width="100%" height="250"></iframe>
 
@@ -53,9 +51,9 @@
 <h3>Safety Tips</h3>
 
 <ul>
-<li>Stay aware of your surroundings</li>
-<li>Share your travel plan with family</li>
-<li>Avoid isolated areas at night</li>
+<li>Stay aware of surroundings</li>
+<li>Share your travel plan</li>
+<li>Avoid dark isolated areas</li>
 <li>Keep emergency contacts ready</li>
 </ul>
 
@@ -67,12 +65,12 @@
 
 </div>
 
+<audio id="alarm">
+<source src="https://www.soundjay.com/button/beep-07.wav">
+</audio>
+
 <script src="script.js"></script>
 
 </body>
 
 </html>
-
-
-
-
