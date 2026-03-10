@@ -7,24 +7,16 @@ maximumAge: 10000,
 timeout: 5000
 };
 
-function updateMap(){
-let map="https://maps.google.com/maps?q="+lat+","+lon+"&z=15&output=embed";
-document.getElementById("mapFrame").src = map;
-}
-
 function getLocation(){
-
-if(lat && lon){
-updateMap();
-return;
-}
 
 navigator.geolocation.getCurrentPosition(function(pos){
 
 lat = pos.coords.latitude;
 lon = pos.coords.longitude;
 
-updateMap();
+let map="https://maps.google.com/maps?q="+lat+","+lon+"&z=15&output=embed";
+
+document.getElementById("mapFrame").src = map;
 
 }, function(){
 alert("Unable to detect location. Please enable GPS.");
@@ -56,12 +48,12 @@ navigator.geolocation.getCurrentPosition(function(pos){
 lat = pos.coords.latitude;
 lon = pos.coords.longitude;
 
-let policeRoute =
-"https://www.google.com/maps/dir/"+lat+","+lon+"/police+station";
+let safePlaces =
+"https://www.google.com/maps/search/police+station+OR+police+booth+OR+hospital/@"+lat+","+lon+",15z";
 
-alert("SOS Activated. Navigating to nearest police station.");
+alert("SOS Activated. Showing nearby safe places.");
 
-window.open(policeRoute,"_blank");
+window.open(safePlaces,"_blank");
 
 }, function(){
 alert("Unable to detect GPS location.");
