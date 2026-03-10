@@ -14,7 +14,7 @@ navigator.geolocation.getCurrentPosition(function(pos){
 lat = pos.coords.latitude;
 lon = pos.coords.longitude;
 
-let map="https://maps.google.com/maps?q="+lat+","+lon+"&z=15&output=embed";
+let map = "https://maps.google.com/maps?q=" + lat + "," + lon + "&z=15&output=embed";
 
 document.getElementById("mapFrame").src = map;
 
@@ -31,14 +31,15 @@ alert("Please detect location first");
 return;
 }
 
-let link="https://maps.google.com/?q="+lat+","+lon;
+let link = "https://maps.google.com/?q=" + lat + "," + lon;
 
-window.location.href="sms:9943366440?body="+encodeURIComponent("My location: "+link);
+window.location.href =
+"sms:9943366440?body=" + encodeURIComponent("My location: " + link);
 
 }
 
 function callHelp(){
-window.location.href="tel:112";
+window.location.href = "tel:112";
 }
 
 function sendSOS(){
@@ -48,12 +49,14 @@ navigator.geolocation.getCurrentPosition(function(pos){
 lat = pos.coords.latitude;
 lon = pos.coords.longitude;
 
-let safePlaces =
-"https://www.google.com/maps/search/police+station+OR+police+booth+OR+hospital/@"+lat+","+lon+",15z";
+let route =
+"https://www.google.com/maps/dir/?api=1&origin=" +
+lat + "," + lon +
+"&destination=police+station&travelmode=walking";
 
-alert("SOS Activated. Showing nearby safe places.");
+alert("SOS Activated. Showing safest and shortest route to nearest police station.");
 
-window.open(safePlaces,"_blank");
+window.open(route,"_blank");
 
 }, function(){
 alert("Unable to detect GPS location.");
@@ -62,5 +65,7 @@ alert("Unable to detect GPS location.");
 }
 
 function toggleDark(){
+
 document.body.classList.toggle("dark");
+
 }
