@@ -22,8 +22,8 @@
 
 <div class="card">
 
-<button class="sos" onclick="sendSOS()">🚨 SOS ALERT</button>
-<p class="info">Activates emergency alert to quickly get attention in dangerous situations.</p>
+<button class="sos" onclick="sendSOS()">🚨 SOS Find Safest Route</button>
+<p class="info">Finds the safest route to the nearest police station or hospital.</p>
 
 <button onclick="getLocation()">📍 Detect Location</button>
 <p class="info">Detects your current GPS location and shows it on the map.</p>
@@ -32,13 +32,13 @@
 <p class="info">Sends your current location through SMS to your emergency contact.</p>
 
 <button onclick="findPolice()">🚓 Nearby Police</button>
-<p class="info">Opens Google Maps to show nearby police stations.</p>
+<p class="info">Shows nearby police stations using Google Maps.</p>
 
 <button onclick="callHelp()">☎ Emergency 112</button>
-<p class="info">Calls the national emergency helpline number for immediate help.</p>
+<p class="info">Calls the national emergency helpline number.</p>
 
 <button onclick="toggleDark()">🌙 Dark Mode</button>
-<p class="info">Switches the interface to dark mode for better visibility at night.</p>
+<p class="info">Switches the interface to dark mode.</p>
 
 <p id="status"></p>
 
@@ -70,10 +70,6 @@
 </div>
 
 </div>
-
-<audio id="alarm">
-<source src="https://www.soundjay.com/button/beep-07.wav">
-</audio>
 
 <script src="script.js"></script>
 
