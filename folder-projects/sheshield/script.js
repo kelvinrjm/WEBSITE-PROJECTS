@@ -94,9 +94,24 @@ window.open(url,"_blank");
 
 function sendSOS(){
 
-document.getElementById("alarm").play();
+if(!navigator.geolocation){
+alert("Location not supported");
+return;
+}
 
-alert("🚨 SOS ACTIVATED");
+navigator.geolocation.getCurrentPosition(function(pos){
+
+let lat = pos.coords.latitude;
+let lon = pos.coords.longitude;
+
+let safeRoute =
+"https://www.google.com/maps/search/police+station+or+hospital/@"+lat+","+lon+",14z";
+
+alert("Finding safest nearby place...");
+
+window.open(safeRoute,"_blank");
+
+});
 
 }
 
@@ -105,34 +120,3 @@ function toggleDark(){
 document.body.classList.toggle("dark");
 
 }
-
-/* SHAKE PHONE SOS */
-
-let shakeThreshold=15;
-let lastX,lastY,lastZ;
-
-window.addEventListener("devicemotion",function(e){
-
-let acc=e.accelerationIncludingGravity;
-
-let x=acc.x;
-let y=acc.y;
-let z=acc.z;
-
-if(lastX!==null){
-
-let delta=Math.abs(x+y+z-lastX-lastY-lastZ);
-
-if(delta>shakeThreshold){
-
-sendSOS();
-
-}
-
-}
-
-lastX=x;
-lastY=y;
-lastZ=z;
-
-});
