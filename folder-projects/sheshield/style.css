@@ -37,19 +37,13 @@ background:#007bff;
 color:white;
 }
 
-button:hover{
-opacity:0.9;
-}
-
 .sos{
 background:red;
 font-weight:bold;
 }
 
-.info{
-font-size:13px;
-color:#555;
-margin-bottom:10px;
+button:hover{
+opacity:0.9;
 }
 
 .dark{
@@ -61,6 +55,8 @@ color:white;
 background:#1e1e1e;
 }
 
-.dark .info{
-color:#ccc;
+#status{
+margin-top:10px;
+font-weight:bold;
+color:#333;
 }
