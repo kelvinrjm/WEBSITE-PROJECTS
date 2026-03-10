@@ -23,16 +23,22 @@
 <div class="card">
 
 <button class="sos" onclick="sendSOS()">🚨 SOS ALERT</button>
+<p class="info">Activates emergency alert to quickly get attention in dangerous situations.</p>
 
 <button onclick="getLocation()">📍 Detect Location</button>
+<p class="info">Detects your current GPS location and shows it on the map.</p>
 
 <button onclick="shareLocation()">📩 Share Location</button>
+<p class="info">Sends your current location through SMS to your emergency contact.</p>
 
 <button onclick="findPolice()">🚓 Nearby Police</button>
+<p class="info">Opens Google Maps to show nearby police stations.</p>
 
 <button onclick="callHelp()">☎ Emergency 112</button>
+<p class="info">Calls the national emergency helpline number for immediate help.</p>
 
 <button onclick="toggleDark()">🌙 Dark Mode</button>
+<p class="info">Switches the interface to dark mode for better visibility at night.</p>
 
 <p id="status"></p>
 
@@ -40,7 +46,7 @@
 
 <div class="card">
 
-<h3>Live Map</h3>
+<h3>Your Current Location</h3>
 
 <iframe id="mapFrame" width="100%" height="250"></iframe>
 
@@ -52,7 +58,7 @@
 
 <ul>
 <li>Stay aware of surroundings</li>
-<li>Share your travel plan</li>
+<li>Share your travel plan with family</li>
 <li>Avoid dark isolated areas</li>
 <li>Keep emergency contacts ready</li>
 </ul>
