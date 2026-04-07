@@ -1,74 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>SWF Women Safety</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWF Women Safety</title>
+    <!-- Modern Font: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header>
-<h2>🛡️ SWF</h2>
-<p>Smart Women Safety Framework</p>
-<h3>Be Bold. Face the Fear. Be Strong.</h3>
-</header>
+    <div class="background-animation">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
 
-<div class="container">
+    <div class="glass-container">
+        <header>
+            <div class="logo-wrapper">
+                <span class="shield-icon">🛡️</span>
+                <h2>SWF</h2>
+            </div>
+            <p class="subtitle">Smart Women Safety Framework</p>
+            <h3 class="tagline">Be Bold. Face the Fear. Be Strong.</h3>
+        </header>
 
-<div class="card">
+        <main>
+            <div class="glass-card actions-card">
+                <button class="btn btn-sos pulse-animation" onclick="sendSOS()">
+                    <span class="icon">🚨</span>
+                    <span>SOS SAFE ROUTE</span>
+                </button>
+                <p class="info">Immediate navigation to the nearest police station.</p>
+                
+                <div class="action-grid">
+                    <div class="action-item">
+                        <button class="btn btn-primary" onclick="getLocation()">
+                            <span class="icon">📍</span> Detect
+                        </button>
+                    </div>
+                    <div class="action-item">
+                        <button class="btn btn-secondary" onclick="shareLocation()">
+                            <span class="icon">📩</span> Share
+                        </button>
+                    </div>
+                    <div class="action-item full-width">
+                        <button class="btn btn-danger btn-call" onclick="callHelp()">
+                            <span class="icon">☎</span> Emergency 112
+                        </button>
+                    </div>
+                    <div class="action-item full-width">
+                        <button class="btn btn-dark-toggle" onclick="toggleDark()">
+                            <span id="themeIcon" class="icon">🌙</span> Toggle Dark Mode
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-<button class="sos" onclick="sendSOS()">🚨 SOS SAFE ROUTE</button>
-<p class="info">Opens Google Maps and shows the fastest route to the nearest police station.</p>
+            <div class="glass-card map-card">
+                <h3>Live Location</h3>
+                <div class="map-wrapper">
+                    <iframe id="mapFrame" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
 
-<button onclick="getLocation()">📍 Detect Location</button>
-<p class="info">Finds your current GPS location and displays it on the map.</p>
+            <div class="glass-card tips-card">
+                <h3><span class="icon">💡</span> Safety Essentials</h3>
+                <ul class="tips-list">
+                    <li><span>👁️</span> Stay aware of your surroundings</li>
+                    <li><span>🗺️</span> Share your travel plan with family</li>
+                    <li><span>🚶‍♀️</span> Avoid isolated areas at night</li>
+                    <li><span>📞</span> Keep emergency contacts ready</li>
+                </ul>
+            </div>
+        </main>
 
-<button onclick="shareLocation()">📩 Share Location</button>
-<p class="info">Sends your live location through SMS to 9943366440.</p>
+        <footer>
+            <p>Designed by <strong>R MARIA KELVIN</strong></p>
+        </footer>
+    </div>
 
-<button onclick="callHelp()">☎ Emergency 112</button>
-<p class="info">Directly calls the national emergency helpline number.</p>
-
-<button onclick="toggleDark()">🌙 Dark Mode</button>
-<p class="info">Switches the interface to dark mode for better visibility at night.</p>
-
-</div>
-
-<div class="card">
-
-<h3>Your Current Location</h3>
-
-<iframe id="mapFrame" width="100%" height="250"></iframe>
-
-</div>
-
-<div class="card">
-
-<h3>Safety Tips</h3>
-
-<ul>
-<li>Stay aware of your surroundings</li>
-<li>Share your travel plan with family</li>
-<li>Avoid isolated areas at night</li>
-<li>Keep emergency contacts ready</li>
-</ul>
-
-<hr>
-<h6><center>Done by: R MARIA KELVIN</center></h6>
-<hr>
-
-</div>
-
-</div>
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
-
 </html>
