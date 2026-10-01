@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CampusVoice | College Problem Reporting</title>
+    <meta
+      name="description"
+      content="CampusVoice is a modern campus problem reporting system built with HTML, CSS, JavaScript, and Supabase."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero" id="top">
+        <div class="hero__content">
+          <p class="eyebrow">College Problem Reporting System</p>
+          <h1>CampusVoice</h1>
+          <p class="hero__description">
+            Report campus problems and help improve your college environment with a
+            fast, anonymous, and secure submission experience.
+          </p>
+          <a class="hero__btn" href="#report-form">Report Problem</a>
+        </div>
+      </header>
+
+      <section class="features" aria-label="Platform features">
+        <article class="feature-card">
+          <i class="fa-solid fa-school"></i>
+          <h3>Better Campus</h3>
+          <p>Help improve college facilities and student experience.</p>
+        </article>
+        <article class="feature-card">
+          <i class="fa-solid fa-bolt"></i>
+          <h3>Quick Reporting</h3>
+          <p>Submit issues in less than a minute from any device.</p>
+        </article>
+        <article class="feature-card">
+          <i class="fa-solid fa-shield-halved"></i>
+          <h3>Secure Storage</h3>
+          <p>Reports are safely stored in Supabase for easy review.</p>
+        </article>
+      </section>
+
+      <main class="main-content">
+        <section class="report-card" id="report-form" aria-labelledby="report-title">
+          <div class="card-header">
+            <h2 id="report-title">Submit a Campus Report</h2>
+            <p>All fields are required except the image upload.</p>
+          </div>
+
+          <form id="reportForm" class="report-form" novalidate>
+            <div class="form-grid">
+              <div class="field-group">
+                <label for="place">📍 Place/block</label>
+                <input id="place" name="place" type="text" placeholder="Where did this happen?" />
+                <small class="error-message" data-error-for="place"></small>
+              </div>
+
+              <div class="field-group">
+                <label for="className">🏫 Class</label>
+                <input id="className" name="class_name" type="text" placeholder="Enter your class or department" />
+                <small class="error-message" data-error-for="className"></small>
+              </div>
+
+              <div class="field-group">
+                <label for="problemTitle">📝 Problem Title</label>
+                <input id="problemTitle" name="problem_title" type="text" placeholder="Summarize the issue" />
+                <small class="error-message" data-error-for="problemTitle"></small>
+              </div>
+
+              <div class="field-group">
+                <label for="submittedDate">📅 Date</label>
+                <input id="submittedDate" name="submitted_date" type="text" readonly />
+                <small class="error-message" data-error-for="submittedDate"></small>
+              </div>
+
+              <div class="field-group field-group--full">
+                <label for="problemDescription">📄 Problem Description</label>
+                <textarea id="problemDescription" name="problem_description" rows="5" placeholder="Describe the problem in detail..."></textarea>
+                <small class="error-message" data-error-for="problemDescription"></small>
+              </div>
+
+              <div class="field-group field-group--full">
+                <label for="suggestedSolution">💡 Suggested Solution</label>
+                <textarea id="suggestedSolution" name="suggested_solution" rows="5" placeholder="Suggest a practical improvement..."></textarea>
+                <small class="error-message" data-error-for="suggestedSolution"></small>
+              </div>
+
+              <div class="field-group field-group--full">
+                <label for="imageUpload">📷 Upload Image (Optional)</label>
+                <input id="imageUpload" name="image" type="file" accept="image/*" />
+                <div id="imagePreviewBox" class="preview-box">
+                  <img id="imagePreview" alt="Selected preview" />
+                  <p id="imagePreviewText">No image selected</p>
+                </div>
+                <small class="error-message" data-error-for="imageUpload"></small>
+              </div>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              <i class="fa-solid fa-paper-plane"></i>
+              Submit Report
+            </button>
+          </form>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>CampusVoice © 2026</p>
+        <span>Developed using HTML, CSS, JavaScript & Supabase</span>
+      </footer>
+    </div>
+
+    <div id="successPopup" class="popup hidden" role="dialog" aria-live="polite" aria-label="Submission success">
+      <div class="popup__content">
+        <i class="fa-solid fa-circle-check"></i>
+        <h3>Your report has been submitted successfully.</h3>
+        <p>Thank you for helping improve the campus experience.</p>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase/config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
