@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Maria Kelvin R — Portfolio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root{
+    --bg:#070a12;
+    --bg-2:#0d1220;
+    --panel:#11182b;
+    --line:rgba(120,150,200,0.12);
+    --text:#e6ecf5;
+    --muted:#8a97ad;
+    --blue:#3b82f6;
+    --blue-2:#60a5fa;
+    --blue-deep:#1d4ed8;
+    --premium-blue:#2b5cff;
+    --gray:#9aa5b8;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Outfit',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+  }
+  .font-display{font-family:'Space Grotesk',sans-serif;}
+
+  /* Background layers */
+  .bg-grid{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.04) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(59,130,246,0.04) 1px,transparent 1px);
+    background-size:60px 60px;
+    mask-image:radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+  .blob{
+    position:fixed;border-radius:50%;filter:blur(80px);opacity:0.5;
+    pointer-events:none;z-index:0;animation:float 18s ease-in-out infinite;
+  }
+  .blob.b1{width:500px;height:500px;background:#1d4ed8;top:-150px;left:-100px;}
+  .blob.b2{width:420px;height:420px;background:#0ea5e9;bottom:-150px;right:-80px;animation-delay:-6s;}
+  .blob.b3{width:300px;height:300px;background:#3b82f6;top:40%;left:50%;animation-delay:-12s;opacity:0.25}
+  @keyframes float{
+    0%,100%{transform:translate(0,0) scale(1)}
+    33%{transform:translate(40px,-30px) scale(1.08)}
+    66%{transform:translate(-30px,40px) scale(0.95)}
+  }
+
+  /* Navigation */
+  nav.navbar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    background:rgba(7,10,18,0.6);border-bottom:1px solid var(--line);
+    transition:all 0.4s ease;
+  }
+  .nav-link{position:relative;color:var(--muted);transition:color 0.3s;}
+  .nav-link::after{
+    content:'';position:absolute;left:0;bottom:-6px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--blue),var(--blue-2));transition:width 0.3s ease;
+  }
+  .nav-link:hover,.nav-link.active{color:var(--text)}
+  .nav-link:hover::after,.nav-link.active::after{width:100%;}
+
+  /* Hero */
+  .hero-name{
+    background:linear-gradient(180deg,#fff 0%,#aab7cc 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero-accent{
+    background:linear-gradient(90deg,#60a5fa,#3b82f6,#1d4ed8);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .typed-cursor{display:inline-block;width:3px;height:1em;background:var(--blue-2);margin-left:4px;animation:blink 1s steps(1) infinite;vertical-align:middle;}
+  @keyframes blink{50%{opacity:0}}
+
+  /* Photo frame */
+  .photo-frame{position:relative;width:340px;height:340px;}
+  .photo-frame::before{
+    content:'';position:absolute;inset:-2px;border-radius:24px;
+    background:conic-gradient(from 0deg,#3b82f6,#60a5fa,#1d4ed8,#3b82f6);
+    animation:spin 8s linear infinite;z-index:0;
+  }
+  .photo-frame::after{content:'';position:absolute;inset:2px;border-radius:22px;background:var(--bg);z-index:1;}
+  .photo-inner{
+    position:absolute;inset:6px;border-radius:18px;z-index:2;overflow:hidden;
+    background:linear-gradient(135deg,#1e293b,#0f172a);display:flex;align-items:center;justify-content:center;
+  }
+  .photo-inner img{width:100%;height:100%;object-fit:cover;}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .floating-badge{
+    position:absolute;z-index:5;padding:10px 14px;border-radius:12px;   
+    background:rgba(17,24,43,0.85);border:1px solid var(--line);
+    backdrop-filter:blur(10px);font-size:13px;display:flex;align-items:center;gap:8px;
+    animation:floatBadge 4s ease-in-out infinite;
+  }
+  @keyframes floatBadge{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+  /* Buttons */
+  .btn-primary{
+    background:linear-gradient(135deg,var(--blue),var(--blue-deep));
+    color:white;padding:14px 28px;border-radius:12px;font-weight:600;
+    box-shadow:0 10px 30px -10px rgba(59,130,246,0.6);
+    transition:all 0.3s;display:inline-flex;align-items:center;gap:10px;
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 40px -12px rgba(59,130,246,0.8);}
+  .btn-ghost{
+    border:1px solid var(--line);padding:14px 28px;border-radius:12px;font-weight:500;
+    color:var(--text);transition:all 0.3s;display:inline-flex;align-items:center;gap:10px;
+    background:rgba(255,255,255,0.02);
+  }
+  .btn-ghost:hover{border-color:var(--blue);background:rgba(59,130,246,0.08);}
+
+  /* Sections */
+  .section{position:relative;z-index:2;padding:120px 0;}
+  .section-tag{
+    display:inline-flex;align-items:center;gap:8px;padding:6px 14px;
+    border:1px solid var(--line);border-radius:30px;font-size:13px;
+    color:var(--blue-2);background:rgba(59,130,246,0.05);margin-bottom:18px;
+  }
+  .section-tag::before{content:'';width:6px;height:6px;background:var(--blue-2);border-radius:50%;animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(96,165,250,0.6)}50%{opacity:0.6;box-shadow:0 0 0 8px rgba(96,165,250,0)}}
+
+  /* Glass cards */
+  .glass-card{
+    background:linear-gradient(135deg,rgba(17,24,43,0.7),rgba(13,18,32,0.5));
+    border:1px solid var(--line);border-radius:18px;
+    backdrop-filter:blur(12px);transition:all 0.4s cubic-bezier(0.2,0.8,0.2,1);
+    position:relative;overflow:hidden;
+  }
+  .glass-card::before{
+    content:'';position:absolute;inset:0;border-radius:18px;padding:1px;
+    background:linear-gradient(135deg,rgba(96,165,250,0.4),transparent 50%);
+    -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;
+    opacity:0;transition:opacity 0.4s;
+    pointer-events:none; /* THIS FIXES THE CLICKING ISSUE */
+  }
+  .glass-card:hover::before{opacity:1;}
+  .glass-card:hover{transform:translateY(-6px);border-color:rgba(96,165,250,0.3);}
+
+  /* ===========================================
+     PREMIUM PROJECTS SECTION (SHARED)
+     =========================================== */
+  .projects-section{position:relative;overflow:hidden;}
+  .projects-bg-glow{
+    position:absolute;top:15%;left:50%;transform:translateX(-50%);
+    width:900px;height:700px;
+    background:radial-gradient(ellipse at center, rgba(43,92,255,0.16), transparent 65%);
+    filter:blur(40px);pointer-events:none;z-index:0;
+  }
+  .projects-bg-glow-2{
+    position:absolute;bottom:10%;right:5%;width:400px;height:400px;
+    background:radial-gradient(circle, rgba(29,78,216,0.12), transparent 70%);
+    filter:blur(50px);pointer-events:none;z-index:0;
+  }
+  .projects-container{max-width:1450px;margin:0 auto;padding:0 32px;position:relative;z-index:2;}
+  .projects-header{text-align:center;margin-bottom:64px;max-width:760px;margin-left:auto;margin-right:auto;}
+  .projects-header .section-tag{margin-bottom:20px;}
+  .projects-title{
+    font-family:'Space Grotesk',sans-serif;font-weight:800;
+    font-size:clamp(2.5rem,5vw,3.75rem);line-height:1.1;letter-spacing:-0.02em;margin-bottom:18px;
+  }
+  .projects-subtitle{color:var(--muted);font-size:1.05rem;line-height:1.65;max-width:640px;margin:0 auto;}
+  .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:38px;}
+  @media (max-width:1100px){.projects-grid{grid-template-columns:repeat(2,1fr);gap:32px;}}
+  @media (max-width:680px){.projects-grid{grid-template-columns:1fr;gap:26px;}.projects-container{padding:0 20px;}}
+
+  .premium-card{
+    background:linear-gradient(135deg, rgba(17,24,43,0.65), rgba(13,18,32,0.45));
+    border:1px solid rgba(43,92,255,0.16);border-radius:20px;
+    backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+    padding:26px;display:flex;flex-direction:column;position:relative;overflow:hidden;
+    transition:transform 0.35s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.35s ease, border-color 0.35s ease;
+    height:100%;
+  }
+  .premium-card::before{
+    content:'';position:absolute;inset:0;border-radius:20px;padding:1px;
+    background:linear-gradient(135deg, rgba(43,92,255,0.55), transparent 55%);
+    -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity 0.35s ease;pointer-events:none;
+  }
+  .premium-card:hover{
+    transform:translateY(-8px);border-color:rgba(43,92,255,0.45);
+    box-shadow:0 28px 60px -22px rgba(43,92,255,0.5), 0 0 40px -10px rgba(43,92,255,0.25);
+  }
+  .premium-card:hover::before{opacity:1;}
+  .card-image{
+    aspect-ratio:16/9;width:100%;border-radius:14px;overflow:hidden;position:relative;
+    background:linear-gradient(135deg,#0f172a,#1e293b);margin-bottom:22px;border:1px solid rgba(43,92,255,0.1);
+  }
+  .card-image-bg{
+    position:absolute;inset:0;
+    background:radial-gradient(circle at 25% 25%, rgba(43,92,255,0.3), transparent 55%),
+               radial-gradient(circle at 75% 75%, rgba(96,165,250,0.18), transparent 55%),
+               linear-gradient(135deg,#0c1322,#162038);
+    transition:transform 0.35s ease;
+  }
+  .card-image-pattern{
+    position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);
+    background-size:24px 24px;opacity:0.6;
+  }
+  .card-image-icon{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-size:3rem;color:rgba(255,255,255,0.45);transition:transform 0.35s ease, color 0.35s ease;z-index:2;
+  }
+  .premium-card:hover .card-image-bg{transform:scale(1.05);}
+  .premium-card:hover .card-image-icon{transform:scale(1.12);color:var(--blue-2);}
+
+  .card-badge{
+    display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:30px;
+    font-size:10.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+    background:rgba(43,92,255,0.12);border:1px solid rgba(43,92,255,0.28);color:#9ec5ff;margin-bottom:14px;align-self:flex-start;
+  }
+  .card-badge .dot{width:5px;height:5px;border-radius:50%;background:var(--blue-2);box-shadow:0 0 8px rgba(96,165,250,0.8);}
+  .card-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;line-height:1.35;margin-bottom:10px;letter-spacing:-0.01em;color:#f1f5fb;}
+  .card-desc{
+    color:var(--muted);font-size:0.88rem;line-height:1.65;margin-bottom:24px;
+    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;flex-grow:1;
+  }
+  .card-buttons{display:flex;gap:10px;margin-top:auto;}
+  .btn-demo,.btn-code{
+    display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:10px 16px;
+    border-radius:10px;font-size:0.83rem;font-weight:600;transition:all 0.3s ease;text-decoration:none;cursor:pointer;
+  }
+  .btn-demo{background:linear-gradient(135deg,var(--blue),var(--blue-deep));color:white;flex:1;box-shadow:0 6px 18px -8px rgba(43,92,255,0.6);}
+  .btn-demo:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(43,92,255,0.85);}
+  .btn-code{background:rgba(255,255,255,0.04);border:1px solid var(--line);color:var(--text);}
+  .btn-code:hover{background:rgba(43,92,255,0.12);border-color:rgba(43,92,255,0.4);color:#9ec5ff;transform:translateY(-2px);}
+
+  /* Staggered card reveal */
+  .premium-card.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.7s ease, transform 0.7s cubic-bezier(0.2,0.8,0.2,1);}
+  .premium-card.reveal.visible{opacity:1;transform:translateY(0);}
+  
+  /* View All Button Wrapper */
+  .view-all-wrapper{display:flex;justify-content:center;margin-top:64px;}
+  .btn-view-all{
+    display:inline-flex;align-items:center;gap:10px;padding:14px 32px;border-radius:12px;
+    font-weight:600;font-size:1rem;background:rgba(43,92,255,0.1);
+    border:1px solid rgba(43,92,255,0.3);color:#9ec5ff;transition:all 0.3s ease;
+  }
+  .btn-view-all:hover{background:var(--blue);color:white;border-color:var(--blue);transform:translateY(-3px);box-shadow:0 10px 30px -10px rgba(59,130,246,0.6);}
+
+  /* Contact inputs */
+  .input-field{
+    width:100%;background:rgba(13,18,32,0.6);border:1px solid var(--line);
+    border-radius:12px;padding:14px 18px;color:var(--text);transition:all 0.3s;font-family:inherit;font-size:0.95rem;
+    position:relative;z-index:2;
+  }
+  .input-field:focus{outline:none;border-color:var(--blue);background:rgba(13,18,32,0.9);box-shadow:0 0 0 4px rgba(59,130,246,0.1);}
+  .input-field::placeholder{color:var(--muted);}
+
+  /* Scroll reveal */
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity 0.9s ease,transform 0.9s cubic-bezier(0.2,0.8,0.2,1);}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  /* Scrollbar */
+  ::-webkit-scrollbar{width:10px;}
+  ::-webkit-scrollbar-track{background:var(--bg);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--blue),var(--blue-deep));border-radius:5px;}
+
+  /* Mobile menu */
+  .mobile-menu{transform:translateX(100%);transition:transform 0.4s ease;}
+  .mobile-menu.open{transform:translateX(0);}
+
+  /* Stats counter */
+  .stat-num{font-variant-numeric:tabular-nums;}
+
+  @media (max-width:768px){.photo-frame{width:260px;height:260px;}}
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="blob b1"></div>
+<div class="blob b2"></div>
+<div class="blob b3"></div>
+
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2 font-display font-bold text-xl tracking-wider">
+      <span class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);box-shadow:0 4px 14px rgba(59,130,246,0.5)">
+        <span class="text-white">R</span>
+      </span>
+      <span>MARIA KELVIN</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="index.html#about" class="nav-link">About</a>
+      <a href="index.html#skills" class="nav-link">Skills</a>
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </div>
+    <a href="index.html#resume" class="hidden md:inline-flex btn-primary text-sm py-2.5 px-5">
+      <i class="fa-solid fa-download"></i> Resume
+    </a>
+    <button id="menuBtn" class="md:hidden text-2xl"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div id="mobileMenu" class="mobile-menu fixed top-0 right-0 h-full w-72 z-[101] p-8 md:hidden" style="background:var(--bg-2);border-left:1px solid var(--line)">
+  <div class="flex justify-end mb-10">
+    <button id="closeMenu" class="text-2xl"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="flex flex-col gap-6 text-lg">
+    <a href="index.html" class="nav-link mobile-link">Home</a>
+    <a href="index.html#about" class="nav-link mobile-link">About</a>
+    <a href="index.html#skills" class="nav-link mobile-link">Skills</a>
+    <a href="projects.html" class="nav-link mobile-link">Projects</a>
+    <a href="index.html#contact" class="nav-link mobile-link">Contact</a>
+    <a href="index.html#resume" class="btn-primary mt-4 mobile-link"><i class="fa-solid fa-download"></i> Download Resume</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="home" class="relative min-h-screen flex items-center pt-24 pb-12 px-6">
+  <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center relative z-10">
+    <div class="reveal">
+      <div class="section-tag"><span>Available for opportunities</span></div>
+      <p class="text-blue-400 font-medium mb-3 tracking-wide">Hi, I'm</p>
+      <h1 class="font-display font-black text-5xl md:text-7xl leading-[1.05] mb-4">
+        <span class="hero-name">MARIA</span><br>
+        <span class="hero-accent">KELVIN R</span>
+      </h1>
+      <div class="text-xl md:text-2xl text-gray-400 font-light mb-6 h-8">
+        <span id="typed"></span><span class="typed-cursor"></span>
+      </div>
+      <p class="text-gray-400 max-w-xl mb-8 leading-relaxed">
+        A passionate <span class="text-blue-300 font-medium">fresher</span> and aspiring software developer 
+        from <span class="text-blue-300 font-medium">Kamaraj College of Engineering and Technology</span>, 
+        Virudhunagar. I build clean, functional and meaningful digital experiences.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="projects.html" class="btn-primary">
+          <i class="fa-solid fa-rocket"></i> View Projects
+        </a>
+        <a href="index.html#contact" class="btn-ghost">
+          <i class="fa-solid fa-paper-plane"></i> Get in Touch
+        </a>
+      </div>
+      <div class="flex items-center gap-5 mt-10">
+        <span class="text-xs text-gray-500 uppercase tracking-widest">Follow</span>
+        <div class="h-px w-10 bg-gray-700"></div>
+        <a href="https://github.com/kelvinrjm" target="_blank" class="text-gray-400 hover:text-blue-400 transition text-lg"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/maria-kelvin-r-27aa69353/" target="_blank" class="text-gray-400 hover:text-blue-400 transition text-lg"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="mailto:rjmkelvin@gmail.com" class="text-gray-400 hover:text-blue-400 transition text-lg"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="flex justify-center lg:justify-end reveal">
+      <div class="photo-frame">
+        <div class="photo-inner">
+          <img src="KELVIN.png" alt="Maria Kelvin R">
+        </div>
+        <div class="floating-badge" style="bottom:-10px;right:-40px;animation-delay:-2s;">
+          <i class="fa-solid fa-code text-blue-400"></i>
+          <span>Full Stack Learner</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-12 gap-12 items-start">
+      <div class="lg:col-span-5 reveal">
+        <div class="section-tag"><span>About Me</span></div>
+        <h2 class="font-display font-bold text-4xl md:text-5xl mb-6 leading-tight">
+          Turning ideas into <span class="hero-accent">interactive reality</span>
+        </h2>
+        <p class="text-gray-400 leading-relaxed mb-5">
+          I'm Maria Kelvin R, an enthusiastic engineering graduate from Kamaraj College of 
+          Engineering and Technology, Virudhunagar. As a fresher, I'm deeply passionate about 
+          technology and constantly exploring new tools and frameworks to expand my skill set.
+        </p>
+        <p class="text-gray-400 leading-relaxed mb-8">
+          I enjoy building projects that solve real-world problems and learning through hands-on 
+          experimentation. I have done projects so far and I'm actively working on building more. 
+          My goal is to grow into a well-rounded software engineer who writes clean, maintainable and impactful code.
+        </p>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="glass-card p-4">
+            <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">Name</p>
+            <p class="font-medium">MARIA KELVIN R</p>
+          </div>
+          <div class="glass-card p-4">
+            <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">Experience</p>
+            <p class="font-medium">Fresher</p>
+          </div>
+          <div class="glass-card p-4">
+            <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">Education</p>
+            <p class="font-medium">B.E.CSE</p>
+          </div>
+          <div class="glass-card p-4">
+            <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">Location</p>
+            <p class="font-medium">Virudhunagar, TN</p>
+          </div>
+        </div>
+      </div>
+      <div class="lg:col-span-7 reveal">
+        <div class="grid sm:grid-cols-3 gap-4 mb-6">
+          <div class="glass-card p-6 text-center">
+            <p class="font-display font-bold text-4xl hero-accent stat-num" data-target="10">0</p>
+            <p class="text-xs text-gray-500 uppercase tracking-wider mt-2">Projects Built</p>
+          </div>
+          <div class="glass-card p-6 text-center">
+            <p class="font-display font-bold text-4xl hero-accent stat-num" data-target="2">0</p>
+            <p class="text-xs text-gray-500 uppercase tracking-wider mt-2">Awards</p>
+          </div>
+          <div class="glass-card p-6 text-center">
+            <p class="font-display font-bold text-4xl hero-accent stat-num" data-target="100">0</p>
+            <p class="text-xs text-gray-500 uppercase tracking-wider mt-2">% Dedication</p>
+          </div>
+        </div>
+        <div class="glass-card p-8">
+          <h3 class="font-display font-semibold text-xl mb-6 flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(59,130,246,0.15)">
+              <i class="fa-solid fa-bullseye text-blue-400 text-sm"></i>
+            </span>
+            What I'm Focused On
+          </h3>
+          <div class="space-y-5">
+            <div class="flex gap-4">
+              <div class="text-blue-400 font-bold text-lg font-display">01</div>
+              <div>
+                <h4 class="font-medium mb-1">Learning Modern Web Stack</h4>
+                <p class="text-sm text-gray-400">Diving deep into React, Node.js and modern frontend ecosystems.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="text-blue-400 font-bold text-lg font-display">02</div>
+              <div>
+                <h4 class="font-medium mb-1">Building Real Projects</h4>
+                <p class="text-sm text-gray-400">Applying what I learn by shipping deployed, usable applications.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="text-blue-400 font-bold text-lg font-display">03</div>
+              <div>
+                <h4 class="font-medium mb-1">Improving Problem Solving</h4>
+                <p class="text-sm text-gray-400">Practicing DSA and writing cleaner, more efficient code every day.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section" style="background:linear-gradient(180deg,transparent,rgba(13,18,32,0.5),transparent)">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="section-tag mx-auto"><span>My Skills</span></div>
+      <h2 class="font-display font-bold text-4xl md:text-5xl mb-4">
+        Tools I <span class="hero-accent">work with</span>
+      </h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">A growing toolkit of languages, frameworks and technologies I've explored and used in my projects.</p>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-10">
+      <div class="reveal">
+        <h3 class="font-display text-xl font-semibold mb-6 flex items-center gap-3">
+          <i class="fa-solid fa-laptop-code text-blue-400"></i> Technical Skills
+        </h3>
+        <div class="glass-card p-8">
+          <p class="text-gray-400 mb-6">Here are the technologies I have learned and worked with:</p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex items-center gap-3 p-4 rounded-lg" style="background:rgba(255,255,255,0.02);border:1px solid var(--line)">
+              <i class="fa-brands fa-html5 text-blue-400 text-xl"></i><span class="font-medium">HTML & CSS</span>
+            </div>
+            <div class="flex items-center gap-3 p-4 rounded-lg" style="background:rgba(255,255,255,0.02);border:1px solid var(--line)">
+              <i class="fa-brands fa-js text-blue-400 text-xl"></i><span class="font-medium">JavaScript</span>
+            </div>
+            <div class="flex items-center gap-3 p-4 rounded-lg" style="background:rgba(255,255,255,0.02);border:1px solid var(--line)">
+              <i class="fa-brands fa-react text-blue-400 text-xl"></i><span class="font-medium">React</span>
+            </div>
+            <div class="flex items-center gap-3 p-4 rounded-lg" style="background:rgba(255,255,255,0.02);border:1px solid var(--line)">
+              <i class="fa-brands fa-node-js text-blue-400 text-xl"></i><span class="font-medium">Node.js</span>
+            </div>
+            <div class="flex items-center gap-3 p-4 rounded-lg" style="background:rgba(255,255,255,0.02);border:1px solid var(--line)">
+              <i class="fa-solid fa-database text-blue-400 text-xl"></i><span class="font-medium">MongoDB / SQL</span>
+            </div>
+            <div class="flex items-center gap-3 p-4 rounded-lg" style="background:rgba(255,255,255,0.02);border:1px solid var(--line)">
+              <i class="fa-brands fa-python text-blue-400 text-xl"></i><span class="font-medium">Python</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <h3 class="font-display text-xl font-semibold mb-6 flex items-center gap-3">
+          <i class="fa-solid fa-user-gear text-blue-400"></i> Tools & Soft Skills
+        </h3>
+        <div class="glass-card p-8 h-full">
+          <div class="grid grid-cols-2 gap-3 mb-8">
+            <div class="flex items-center gap-3 p-3 rounded-lg" style="background:rgba(255,255,255,0.02);border:1px solid var(--line)">
+              <i class="fa-brands fa-git-alt text-blue-400"></i><span class="text-sm">Git & GitHub</span>
+            </div>
+            <div class="flex items-center gap-3 p-3 rounded-lg" style="background:rgba(255,255,255,0.02);border:1px solid var(--line)">
+              <i class="fa-brands fa-figma text-blue-400"></i><span class="text-sm">Figma</span>
+            </div>
+            <div class="flex items-center gap-3 p-3 rounded-lg" style="background:rgba(255,255,255,0.02);border:1px solid var(--line)">
+              <i class="fa-solid fa-code-branch text-blue-400"></i><span class="text-sm">VS Code</span>
+            </div>
+            <div class="flex items-center gap-3 p-3 rounded-lg" style="background:rgba(255,255,255,0.02);border:1px solid var(--line)">
+              <i class="fa-brands fa-bootstrap text-blue-400"></i><span class="text-sm">Tailwind / Bootstrap</span>
+            </div>
+            <div class="flex items-center gap-3 p-3 rounded-lg" style="background:rgba(255,255,255,0.02);border:1px solid var(--line)">
+              <i class="fa-solid fa-terminal text-blue-400"></i><span class="text-sm">Linux / CLI</span>
+            </div>
+            <div class="flex items-center gap-3 p-3 rounded-lg" style="background:rgba(255,255,255,0.02);border:1px solid var(--line)">
+              <i class="fa-solid fa-cloud text-blue-400"></i><span class="text-sm">Deployment (Vercel/Netlify)</span>
+            </div>
+          </div>
+          <h4 class="font-medium mb-4 text-sm uppercase tracking-wider text-gray-500">Soft Skills</h4>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-4 py-2 rounded-full text-sm" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);color:#93c5fd">Quick Learner</span>
+            <span class="px-4 py-2 rounded-full text-sm" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);color:#93c5fd">Team Player</span>
+            <span class="px-4 py-2 rounded-full text-sm" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);color:#93c5fd">Problem Solver</span>
+            <span class="px-4 py-2 rounded-full text-sm" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);color:#93c5fd">Adaptable</span>
+            <span class="px-4 py-2 rounded-full text-sm" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);color:#93c5fd">Communicative</span>
+            <span class="px-4 py-2 rounded-full text-sm" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);color:#93c5fd">Time Management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- FEATURED PROJECTS PREVIEW                    -->
+<!-- ============================================ -->
+<section id="projects" class="section projects-section">
+  <div class="projects-bg-glow"></div>
+  <div class="projects-bg-glow-2"></div>
+  
+  <div class="projects-container">
+    <div class="projects-header reveal">
+      <div class="section-tag"><span>Portfolio</span></div>
+      <h2 class="projects-title">Featured <span class="hero-accent">Projects</span></h2>
+      <p class="projects-subtitle">A collection of full-stack applications showcasing my skills in web development, AI, and modern technologies.</p>
+    </div>
+
+    <!-- Showing 3 preview projects on homepage -->
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <article class="premium-card reveal" style="transition-delay:0s">
+        <div class="card-image">
+          <div class="card-image-bg"></div>
+          <div class="card-image-pattern"></div>
+          <div class="card-image-icon"><i class="fa-solid fa-globe"></i></div>
+        </div>
+        <span class="card-badge"><span class="dot"></span>Full Stack • E-Commerce</span>
+        <h3 class="card-title">JMJ GHEE – Premium Business Website</h3>
+        <p class="card-desc">A responsive business website for JMJ GHEE featuring product showcases, WhatsApp ordering, customer reviews, company story, and a modern shopping experience for premium traditional ghee.</p>
+        <div class="card-buttons">
+          <a href="https://jmjghee-vert.vercel.app/" target="_blank" class="btn-demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+          
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="premium-card reveal" style="transition-delay:0.08s">
+        <div class="card-image">
+          <div class="card-image-bg"></div>
+          <div class="card-image-pattern"></div>
+          <div class="card-image-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        </div>
+        <span class="card-badge"><span class="dot"></span>Full Stack • Safety Platform</span>
+        <h3 class="card-title">Smart Women Safety Framework</h3>
+        <p class="card-desc">A feature-rich women safety platform that enables real-time location tracking, SOS emergency alerts, emergency contact sharing, safe route guidance, and police navigation.</p>
+        <div class="card-buttons">
+          <a href="https://swf-tan.vercel.app/" target="_blank" class="btn-demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+         
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="premium-card reveal" style="transition-delay:0.16s">
+        <div class="card-image">
+          <div class="card-image-bg"></div>
+          <div class="card-image-pattern"></div>
+          <div class="card-image-icon"><i class="fa-solid fa-droplet"></i></div>
+        </div>
+        <span class="card-badge"><span class="dot"></span>Full Stack • Healthcare</span>
+        <h3 class="card-title">LifeDrop – Blood Donation Platform</h3>
+        <p class="card-desc">A blood donation platform that connects donors with patients through real-time matching, blood request management, donor registration, and location-based search across India.</p>
+        <div class="card-buttons">
+          <a href="https://blood-phi-drab.vercel.app/" target="_blank" class="btn-demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+       
+        </div>
+      </article>
+    </div>
+    
+    <!-- View All Projects Button -->
+    <div class="view-all-wrapper reveal">
+      <a href="projects.html" class="btn-view-all">
+        View All Projects <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section" style="background:linear-gradient(180deg,transparent,rgba(13,18,32,0.5),transparent)">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-12">
+      <div class="reveal">
+        <div class="section-tag"><span>Get In Touch</span></div>
+        <h2 class="font-display font-bold text-4xl md:text-5xl mb-6 leading-tight">
+          Let's build something <span class="hero-accent">together</span>
+        </h2>
+        <p class="text-gray-400 leading-relaxed mb-10">
+          I'm currently open to internships, fresher roles and collaboration on interesting projects. 
+          Feel free to reach out — I'll get back to you as soon as I can.
+        </p>
+        <div class="space-y-5">
+          <a href="mailto:rjmkelvin@gmail.com" class="flex items-center gap-4 group">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(59,130,246,0.1);border:1px solid var(--line)">
+              <i class="fa-solid fa-envelope text-blue-400"></i>
+            </div>
+            <div>
+              <p class="text-xs text-gray-500 uppercase tracking-wider">Email</p>
+              <p class="group-hover:text-blue-400 transition">rjmkelvin@gmail.com</p>
+            </div>
+          </a>
+          <a href="tel:+919943366440" class="flex items-center gap-4 group">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(59,130,246,0.1);border:1px solid var(--line)">
+              <i class="fa-solid fa-phone text-blue-400"></i>
+            </div>
+            <div>
+              <p class="text-xs text-gray-500 uppercase tracking-wider">Phone</p>
+              <p class="group-hover:text-blue-400 transition">+91 99433 66440</p>
+            </div>
+          </a>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(59,130,246,0.1);border:1px solid var(--line)">
+              <i class="fa-solid fa-location-dot text-blue-400"></i>
+            </div>
+            <div>
+              <p class="text-xs text-gray-500 uppercase tracking-wider">Location</p>
+              <p>Fathima Nagar, Virudhunagar, Tamil Nadu, India</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex gap-3 mt-10">
+          <a href="https://github.com/kelvinrjm" target="_blank" class="w-11 h-11 rounded-xl flex items-center justify-center transition" style="background:rgba(255,255,255,0.03);border:1px solid var(--line)" onmouseover="this.style.background='rgba(59,130,246,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.03)'"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/maria-kelvin-r-27aa69353/" target="_blank" class="w-11 h-11 rounded-xl flex items-center justify-center transition" style="background:rgba(255,255,255,0.03);border:1px solid var(--line)" onmouseover="this.style.background='rgba(59,130,246,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.03)'"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="mailto:rjmkelvin@gmail.com" class="w-11 h-11 rounded-xl flex items-center justify-center transition" style="background:rgba(255,255,255,0.03);border:1px solid var(--line)" onmouseover="this.style.background='rgba(59,130,246,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.03)'"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="reveal">
+        <form id="contactForm" class="glass-card p-8 space-y-5">
+          <input type="hidden" name="_subject" value="New message from your portfolio!">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label class="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Name</label>
+              <input type="text" name="name" required class="input-field" placeholder="" autocomplete="name">
+            </div>
+            <div>
+              <label class="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Email</label>
+              <input type="email" name="email" required class="input-field" placeholder="" autocomplete="email">
+            </div>
+          </div>
+          <div>
+            <label class="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Subject</label>
+            <input type="text" name="subject" required class="input-field" placeholder="">
+          </div>
+          <div>
+            <label class="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Message</label>
+            <textarea required name="message" rows="5" class="input-field resize-none" placeholder=""></textarea>
+          </div>
+          <button type="submit" id="submitBtn" class="btn-primary w-full justify-center">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+          </button>
+          <p id="formMsg" class="text-center text-sm hidden">
+            <i class="fa-solid fa-circle-check mr-2"></i><span id="formMsgText"></span>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME DOWNLOAD -->
+<section id="resume" class="section">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="glass-card p-10 md:p-14 text-center reveal relative overflow-hidden">
+      <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full" style="background:radial-gradient(circle,rgba(59,130,246,0.25),transparent 70%)"></div>
+      <div class="absolute -bottom-20 -left-20 w-64 h-64 rounded-full" style="background:radial-gradient(circle,rgba(29,78,216,0.2),transparent 70%)"></div>
+      <div class="relative">
+        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);box-shadow:0 10px 30px -10px rgba(59,130,246,0.6)">
+          <i class="fa-solid fa-file-arrow-down text-3xl text-white"></i>
+        </div>
+        <div class="section-tag mx-auto mb-4"><span>Resume</span></div>
+        <h2 class="font-display font-bold text-3xl md:text-5xl mb-4">
+          Download my <span class="hero-accent">Resume</span>
+        </h2>
+        <p class="text-gray-400 max-w-xl mx-auto mb-8">
+          Get a complete overview of my education, skills, projects and experience in one PDF. 
+          Always up-to-date and ready to share.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4 mb-8">
+          <div class="flex items-center gap-2 text-sm text-gray-400"><i class="fa-solid fa-file-pdf text-blue-400"></i> PDF format</div>
+          <div class="w-px h-4 bg-gray-700"></div>
+          <div class="flex items-center gap-2 text-sm text-gray-400"><i class="fa-solid fa-file-lines text-blue-400"></i> 1-2 pages</div>
+          <div class="w-px h-4 bg-gray-700"></div>
+          <div class="flex items-center gap-2 text-sm text-gray-400"><i class="fa-solid fa-clock text-blue-400"></i> Updated recently</div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="RESUME.pdf" download class="btn-primary">
+            <i class="fa-solid fa-download"></i> Download Resume
+          </a>
+          <a href="RESUME.pdf" target="_blank" class="btn-ghost">
+            <i class="fa-solid fa-eye"></i> View in Browser
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="relative z-10 py-10 px-6 border-t" style="border-color:var(--line);background:rgba(7,10,18,0.6)">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2 font-display font-bold tracking-wider">
+      <span class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">
+        <span class="text-white text-sm">R</span>
+      </span>
+      MARIA KELVIN
+    </div>
+    <p class="text-sm text-gray-500">© <span id="year"></span> MARIA KELVIN R. Crafted with passion & code.</p>
+    <a href="index.html#home" class="text-sm text-gray-400 hover:text-blue-400 transition flex items-center gap-2">
+      Back to top <i class="fa-solid fa-arrow-up"></i>
+    </a>
+  </div>
+</footer>
+
+<!-- Toast notification -->
+<div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 px-6 py-3 rounded-xl text-sm z-[200] opacity-0 pointer-events-none transition-all duration-300" style="background:rgba(17,24,43,0.95);border:1px solid var(--line);backdrop-filter:blur(10px);transform:translate(-50%,20px)">
+  <span id="toastMsg"></span>
+</div>
+
+<script>
+  // ====== Typewriter ======
+  const roles = ['Aspiring Software Developer','Web Development Enthusiast','Full Stack Learner','Quick Learner'];
+  let rI=0,cI=0,deleting=false;
+  const typedEl = document.getElementById('typed');
+  function type(){
+    const word = roles[rI];
+    if(deleting){
+      typedEl.textContent = word.substring(0,cI--);
+      if(cI<0){deleting=false;rI=(rI+1)%roles.length;setTimeout(type,400);return;}
+      setTimeout(type,40);
+    } else {
+      typedEl.textContent = word.substring(0,cI++);
+      if(cI>word.length){deleting=true;setTimeout(type,1600);return;}
+      setTimeout(type,80);
+    }
+  }
+  type();
+
+  // ====== Scroll reveal ======
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        if(e.target.querySelector('.stat-num')){
+          e.target.querySelectorAll('.stat-num').forEach(animateCounter);
+        }
+      }
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+  function animateCounter(el){
+    const target = +el.dataset.target;
+    let current = 0;
+    const step = target/60;
+    const tick = ()=>{
+      current += step;
+      if(current<target){el.textContent=Math.floor(current);requestAnimationFrame(tick);}
+      else{el.textContent=target;}
+    };
+    tick();
+  }
+
+  // ====== Nav active link on scroll ======
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  window.addEventListener('scroll',()=>{
+    let current = '';
+    sections.forEach(s=>{
+      const top = s.offsetTop - 100;
+      if(window.scrollY >= top) current = s.id;
+    });
+    navLinks.forEach(l=>{
+      l.classList.toggle('active', l.getAttribute('href')==='#'+current);
+    });
+  });
+
+  // ====== Mobile menu ======
+  const menuBtn = document.getElementById('menuBtn');
+  const closeMenu = document.getElementById('closeMenu');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click',()=>mobileMenu.classList.add('open'));
+  closeMenu.addEventListener('click',()=>mobileMenu.classList.remove('open'));
+  document.querySelectorAll('.mobile-link').forEach(l=>{
+    l.addEventListener('click',()=>mobileMenu.classList.remove('open'));
+  });
+
+  // ====== Contact form — sends email to rjmkelvin@gmail.com ======
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formMsg = document.getElementById('formMsg');
+  const formMsgText = document.getElementById('formMsgText');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const originalHTML = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = '0.75';
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/rjmkelvin@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+      
+      const result = await response.json();
+
+      if (result.success === "true") {
+        formMsgText.textContent = 'Thanks! Your message has been sent to rjmkelvin@gmail.com';
+        formMsg.classList.remove('hidden');
+        formMsg.style.color = '#93c5fd'; // blue light
+        form.reset();
+        showToast('Message sent successfully!');
+        setTimeout(() => formMsg.classList.add('hidden'), 7000);
+      } else if (result.message && result.message.includes("activation")) {
+        formMsgText.textContent = 'Action required: Check rjmkelvin@gmail.com to click the activation link from FormSubmit!';
+        formMsg.classList.remove('hidden');
+        formMsg.style.color = '#fbbf24'; // amber
+        showToast('Activation required!');
+      } else {
+        throw new Error(result.message || 'Submission failed');
+      }
+    } catch (err) {
+      console.error("Form submission error:", err);
+      const name = data.name || '';
+      const email = data.email || '';
+      const subject = data.subject || 'Portfolio Contact';
+      const message = data.message || '';
+      const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+      const mailtoLink = `mailto:rjmkelvin@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      formMsgText.textContent = 'Could not send via web. Opening your email app...';
+      formMsg.classList.remove('hidden');
+      formMsg.style.color = '#fca5a5'; // red light
+      
+      window.location.href = mailtoLink;
+    } finally {
+      submitBtn.innerHTML = originalHTML;
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = '1';
+    }
+  });
+
+  // ====== Toast ======
+  const toast = document.getElementById('toast');
+  const toastMsg = document.getElementById('toastMsg');
+  function showToast(msg){
+    toastMsg.textContent = msg;
+    toast.style.opacity='1';
+    toast.style.transform='translate(-50%,0)';
+    setTimeout(()=>{
+      toast.style.opacity='0';
+      toast.style.transform='translate(-50%,20px)';
+    },3000);
+  }
+
+  // ====== Year ======
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ====== Smooth parallax for blobs ======
+  document.addEventListener('mousemove',e=>{
+    const x = (e.clientX/window.innerWidth - 0.5);
+    const y = (e.clientY/window.innerHeight - 0.5);
+    document.querySelectorAll('.blob').forEach((b,i)=>{
+      const s = (i+1)*15;
+      b.style.transform = `translate(${x*s}px,${y*s}px)`;
+    });
+  });
+</script>
+</body>
+</html>

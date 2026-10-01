@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Maria Kelvin R — Projects</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root{
+    --bg:#070a12;
+    --bg-2:#0d1220;
+    --panel:#11182b;
+    --line:rgba(120,150,200,0.12);
+    --text:#e6ecf5;
+    --muted:#8a97ad;
+    --blue:#3b82f6;
+    --blue-2:#60a5fa;
+    --blue-deep:#1d4ed8;
+    --premium-blue:#2b5cff;
+    --gray:#9aa5b8;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Outfit',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+  }
+  .font-display{font-family:'Space Grotesk',sans-serif;}
+
+  /* Background layers */
+  .bg-grid{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.04) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(59,130,246,0.04) 1px,transparent 1px);
+    background-size:60px 60px;
+    mask-image:radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+  .blob{
+    position:fixed;border-radius:50%;filter:blur(80px);opacity:0.5;
+    pointer-events:none;z-index:0;animation:float 18s ease-in-out infinite;
+  }
+  .blob.b1{width:500px;height:500px;background:#1d4ed8;top:-150px;left:-100px;}
+  .blob.b2{width:420px;height:420px;background:#0ea5e9;bottom:-150px;right:-80px;animation-delay:-6s;}
+  .blob.b3{width:300px;height:300px;background:#3b82f6;top:40%;left:50%;animation-delay:-12s;opacity:0.25}
+  @keyframes float{
+    0%,100%{transform:translate(0,0) scale(1)}
+    33%{transform:translate(40px,-30px) scale(1.08)}
+    66%{transform:translate(-30px,40px) scale(0.95)}
+  }
+
+  /* Navigation */
+  nav.navbar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    background:rgba(7,10,18,0.6);border-bottom:1px solid var(--line);
+    transition:all 0.4s ease;
+  }
+  .nav-link{position:relative;color:var(--muted);transition:color 0.3s;}
+  .nav-link::after{
+    content:'';position:absolute;left:0;bottom:-6px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--blue),var(--blue-2));transition:width 0.3s ease;
+  }
+  .nav-link:hover,.nav-link.active{color:var(--text)}
+  .nav-link:hover::after,.nav-link.active::after{width:100%;}
+
+  /* Hero/Text Styles */
+  .hero-accent{
+    background:linear-gradient(90deg,#60a5fa,#3b82f6,#1d4ed8);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+
+  /* Buttons */
+  .btn-primary{
+    background:linear-gradient(135deg,var(--blue),var(--blue-deep));
+    color:white;padding:14px 28px;border-radius:12px;font-weight:600;
+    box-shadow:0 10px 30px -10px rgba(59,130,246,0.6);
+    transition:all 0.3s;display:inline-flex;align-items:center;gap:10px;
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 40px -12px rgba(59,130,246,0.8);}
+  .btn-ghost{
+    border:1px solid var(--line);padding:14px 28px;border-radius:12px;font-weight:500;
+    color:var(--text);transition:all 0.3s;display:inline-flex;align-items:center;gap:10px;
+    background:rgba(255,255,255,0.02);
+  }
+  .btn-ghost:hover{border-color:var(--blue);background:rgba(59,130,246,0.08);}
+
+  /* Sections */
+  .section{position:relative;z-index:2;padding:120px 0;}
+  .section-tag{
+    display:inline-flex;align-items:center;gap:8px;padding:6px 14px;
+    border:1px solid var(--line);border-radius:30px;font-size:13px;
+    color:var(--blue-2);background:rgba(59,130,246,0.05);margin-bottom:18px;
+  }
+  .section-tag::before{content:'';width:6px;height:6px;background:var(--blue-2);border-radius:50%;animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(96,165,250,0.6)}50%{opacity:0.6;box-shadow:0 0 0 8px rgba(96,165,250,0)}}
+
+  /* ===========================================
+     PREMIUM PROJECTS SECTION (SHARED)
+     =========================================== */
+  .projects-section{position:relative;overflow:hidden;}
+  .projects-bg-glow{
+    position:absolute;top:15%;left:50%;transform:translateX(-50%);
+    width:900px;height:700px;
+    background:radial-gradient(ellipse at center, rgba(43,92,255,0.16), transparent 65%);
+    filter:blur(40px);pointer-events:none;z-index:0;
+  }
+  .projects-bg-glow-2{
+    position:absolute;bottom:10%;right:5%;width:400px;height:400px;
+    background:radial-gradient(circle, rgba(29,78,216,0.12), transparent 70%);
+    filter:blur(50px);pointer-events:none;z-index:0;
+  }
+  .projects-container{max-width:1450px;margin:0 auto;padding:0 32px;position:relative;z-index:2;}
+  .projects-header{text-align:center;margin-bottom:64px;max-width:760px;margin-left:auto;margin-right:auto;}
+  .projects-header .section-tag{margin-bottom:20px;}
+  .projects-title{
+    font-family:'Space Grotesk',sans-serif;font-weight:800;
+    font-size:clamp(2.5rem,5vw,3.75rem);line-height:1.1;letter-spacing:-0.02em;margin-bottom:18px;
+  }
+  .projects-subtitle{color:var(--muted);font-size:1.05rem;line-height:1.65;max-width:640px;margin:0 auto;}
+  .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:38px;}
+  @media (max-width:1100px){.projects-grid{grid-template-columns:repeat(2,1fr);gap:32px;}}
+  @media (max-width:680px){.projects-grid{grid-template-columns:1fr;gap:26px;}.projects-container{padding:0 20px;}}
+
+  .premium-card{
+    background:linear-gradient(135deg, rgba(17,24,43,0.65), rgba(13,18,32,0.45));
+    border:1px solid rgba(43,92,255,0.16);border-radius:20px;
+    backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+    padding:26px;display:flex;flex-direction:column;position:relative;overflow:hidden;
+    transition:transform 0.35s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.35s ease, border-color 0.35s ease;
+    height:100%;
+  }
+  .premium-card::before{
+    content:'';position:absolute;inset:0;border-radius:20px;padding:1px;
+    background:linear-gradient(135deg, rgba(43,92,255,0.55), transparent 55%);
+    -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity 0.35s ease;pointer-events:none;
+  }
+  .premium-card:hover{
+    transform:translateY(-8px);border-color:rgba(43,92,255,0.45);
+    box-shadow:0 28px 60px -22px rgba(43,92,255,0.5), 0 0 40px -10px rgba(43,92,255,0.25);
+  }
+  .premium-card:hover::before{opacity:1;}
+  .card-image{
+    aspect-ratio:16/9;width:100%;border-radius:14px;overflow:hidden;position:relative;
+    background:linear-gradient(135deg,#0f172a,#1e293b);margin-bottom:22px;border:1px solid rgba(43,92,255,0.1);
+  }
+  .card-image-bg{
+    position:absolute;inset:0;
+    background:radial-gradient(circle at 25% 25%, rgba(43,92,255,0.3), transparent 55%),
+               radial-gradient(circle at 75% 75%, rgba(96,165,250,0.18), transparent 55%),
+               linear-gradient(135deg,#0c1322,#162038);
+    transition:transform 0.35s ease;
+  }
+  .card-image-pattern{
+    position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);
+    background-size:24px 24px;opacity:0.6;
+  }
+  .card-image-icon{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-size:3rem;color:rgba(255,255,255,0.45);transition:transform 0.35s ease, color 0.35s ease;z-index:2;
+  }
+  .premium-card:hover .card-image-bg{transform:scale(1.05);}
+  .premium-card:hover .card-image-icon{transform:scale(1.12);color:var(--blue-2);}
+
+  .card-badge{
+    display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:30px;
+    font-size:10.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+    background:rgba(43,92,255,0.12);border:1px solid rgba(43,92,255,0.28);color:#9ec5ff;margin-bottom:14px;align-self:flex-start;
+  }
+  .card-badge .dot{width:5px;height:5px;border-radius:50%;background:var(--blue-2);box-shadow:0 0 8px rgba(96,165,250,0.8);}
+  .card-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;line-height:1.35;margin-bottom:10px;letter-spacing:-0.01em;color:#f1f5fb;}
+  .card-desc{
+    color:var(--muted);font-size:0.88rem;line-height:1.65;margin-bottom:24px;
+    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;flex-grow:1;
+  }
+  .card-buttons{display:flex;gap:10px;margin-top:auto;}
+  .btn-demo,.btn-code{
+    display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:10px 16px;
+    border-radius:10px;font-size:0.83rem;font-weight:600;transition:all 0.3s ease;text-decoration:none;cursor:pointer;
+  }
+  .btn-demo{background:linear-gradient(135deg,var(--blue),var(--blue-deep));color:white;flex:1;box-shadow:0 6px 18px -8px rgba(43,92,255,0.6);}
+  .btn-demo:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(43,92,255,0.85);}
+  .btn-code{background:rgba(255,255,255,0.04);border:1px solid var(--line);color:var(--text);}
+  .btn-code:hover{background:rgba(43,92,255,0.12);border-color:rgba(43,92,255,0.4);color:#9ec5ff;transform:translateY(-2px);}
+
+  /* Staggered card reveal */
+  .premium-card.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.7s ease, transform 0.7s cubic-bezier(0.2,0.8,0.2,1);}
+  .premium-card.reveal.visible{opacity:1;transform:translateY(0);}
+
+  /* Scroll reveal */
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity 0.9s ease,transform 0.9s cubic-bezier(0.2,0.8,0.2,1);}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  /* Scrollbar */
+  ::-webkit-scrollbar{width:10px;}
+  ::-webkit-scrollbar-track{background:var(--bg);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--blue),var(--blue-deep));border-radius:5px;}
+
+  /* Mobile menu */
+  .mobile-menu{transform:translateX(100%);transition:transform 0.4s ease;}
+  .mobile-menu.open{transform:translateX(0);}
+  
+  /* Padding for page top to prevent navbar overlap */
+  .page-pt { padding-top: 140px; }
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="blob b1"></div>
+<div class="blob b2"></div>
+<div class="blob b3"></div>
+
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2 font-display font-bold text-xl tracking-wider">
+      <span class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);box-shadow:0 4px 14px rgba(59,130,246,0.5)">
+        <span class="text-white">R</span>
+      </span>
+      <span>MARIA KELVIN</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="index.html#about" class="nav-link">About</a>
+      <a href="index.html#skills" class="nav-link">Skills</a>
+      <a href="projects.html" class="nav-link active">Projects</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </div>
+    <a href="index.html#resume" class="hidden md:inline-flex btn-primary text-sm py-2.5 px-5">
+      <i class="fa-solid fa-download"></i> Resume
+    </a>
+    <button id="menuBtn" class="md:hidden text-2xl"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div id="mobileMenu" class="mobile-menu fixed top-0 right-0 h-full w-72 z-[101] p-8 md:hidden" style="background:var(--bg-2);border-left:1px solid var(--line)">
+  <div class="flex justify-end mb-10">
+    <button id="closeMenu" class="text-2xl"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="flex flex-col gap-6 text-lg">
+    <a href="index.html" class="nav-link mobile-link">Home</a>
+    <a href="index.html#about" class="nav-link mobile-link">About</a>
+    <a href="index.html#skills" class="nav-link mobile-link">Skills</a>
+    <a href="projects.html" class="nav-link mobile-link">Projects</a>
+    <a href="index.html#contact" class="nav-link mobile-link">Contact</a>
+    <a href="index.html#resume" class="btn-primary mt-4 mobile-link"><i class="fa-solid fa-download"></i> Download Resume</a>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- ALL PROJECTS SECTION                         -->
+<!-- ============================================ -->
+<section id="projects" class="section projects-section page-pt">
+  <div class="projects-bg-glow"></div>
+  <div class="projects-bg-glow-2"></div>
+  
+  <div class="projects-container">
+    <div class="projects-header reveal">
+      <div class="section-tag"><span>Portfolio</span></div>
+      <h2 class="projects-title">All <span class="hero-accent">Projects</span></h2>
+      <p class="projects-subtitle">A complete collection of full-stack applications showcasing my skills in web development, AI, and modern technologies.</p>
+    </div>
+
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <article class="premium-card reveal" style="transition-delay:0s">
+        <div class="card-image">
+          <div class="card-image-bg"></div>
+          <div class="card-image-pattern"></div>
+          <div class="card-image-icon"><i class="fa-solid fa-globe"></i></div>
+        </div>
+        <span class="card-badge"><span class="dot"></span>Full Stack • E-Commerce</span>
+        <h3 class="card-title">JMJ GHEE – Premium Business Website</h3>
+        <p class="card-desc">A responsive business website for JMJ GHEE featuring product showcases, WhatsApp ordering, customer reviews, company story, and a modern shopping experience for premium traditional ghee.</p>
+        <div class="card-buttons">
+          <a href="https://jmjghee-vert.vercel.app/" target="_blank" class="btn-demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+          
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="premium-card reveal" style="transition-delay:0.08s">
+        <div class="card-image">
+          <div class="card-image-bg"></div>
+          <div class="card-image-pattern"></div>
+          <div class="card-image-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        </div>
+        <span class="card-badge"><span class="dot"></span>Full Stack • Safety Platform</span>
+        <h3 class="card-title">Smart Women Safety Framework</h3>
+        <p class="card-desc">A feature-rich women safety platform that enables real-time location tracking, SOS emergency alerts, emergency contact sharing, safe route guidance, and police navigation.</p>
+        <div class="card-buttons">
+          <a href="https://swf-tan.vercel.app/" target="_blank" class="btn-demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+          
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="premium-card reveal" style="transition-delay:0.16s">
+        <div class="card-image">
+          <div class="card-image-bg"></div>
+          <div class="card-image-pattern"></div>
+          <div class="card-image-icon"><i class="fa-solid fa-droplet"></i></div>
+        </div>
+        <span class="card-badge"><span class="dot"></span>Full Stack • Healthcare</span>
+        <h3 class="card-title">LifeDrop – Blood Donation Platform</h3>
+        <p class="card-desc">A blood donation platform that connects donors with patients through real-time matching, blood request management, donor registration, and location-based search across India.</p>
+        <div class="card-buttons">
+          <a href="https://blood-phi-drab.vercel.app/" target="_blank" class="btn-demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+         
+        </div>
+      </article>
+
+      <!-- Project 4 -->
+      <article class="premium-card reveal" style="transition-delay:0.24s">
+        <div class="card-image">
+          <div class="card-image-bg"></div>
+          <div class="card-image-pattern"></div>
+          <div class="card-image-icon"><i class="fa-solid fa-bullhorn"></i></div>
+        </div>
+        <span class="card-badge"><span class="dot"></span>Full Stack • Web App</span>
+        <h3 class="card-title">CampusVoice – College Problem Reporting</h3>
+        <p class="card-desc">A campus issue reporting platform that allows students to securely submit complaints, upload images, and suggest solutions with anonymous reporting and Supabase-powered storage.</p>
+        <div class="card-buttons">
+          <a href="https://campus-voice-tawny.vercel.app/" target="_blank" class="btn-demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+       
+        </div>
+      </article>
+
+      <!-- Project 5 -->
+      <article class="premium-card reveal" style="transition-delay:0.32s">
+        <div class="card-image">
+          <div class="card-image-bg"></div>
+          <div class="card-image-pattern"></div>
+          <div class="card-image-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        </div>
+        <span class="card-badge"><span class="dot"></span>Education • Student Portal</span>
+        <h3 class="card-title">Physics Kamaraj – Engineering Notes</h3>
+        <p class="card-desc">A modern academic portal providing Engineering Physics notes, question banks, recommended books, and video lectures for Semester 1 and Semester 2 in one organized platform.</p>
+        <div class="card-buttons">
+          <a href="https://physicskamaraj.neocities.org/phy/" target="_blank" class="btn-demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+       
+        </div>
+      </article>
+
+      <!-- Project 6 -->
+      <article class="premium-card reveal" style="transition-delay:0.4s">
+        <div class="card-image">
+          <div class="card-image-bg"></div>
+          <div class="card-image-pattern"></div>
+          <div class="card-image-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+        </div>
+        <span class="card-badge"><span class="dot"></span>Full Stack • Business App</span>
+        <h3 class="card-title">Invoice Management System</h3>
+        <p class="card-desc">A GST-compliant invoice management system for generating professional tax invoices with customer details, product entries, tax calculations, and printable invoice formats.</p>
+        <div class="card-buttons">
+          <a href="https://invoice-azure-seven.vercel.app/" target="_blank" class="btn-demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+      
+        </div>
+      </article>
+
+      <!-- Project 7 -->
+      <article class="premium-card reveal" style="transition-delay:0.48s">
+        <div class="card-image">
+          <div class="card-image-bg"></div>
+          <div class="card-image-pattern"></div>
+          <div class="card-image-icon"><i class="fa-solid fa-users"></i></div>
+        </div>
+        <span class="card-badge"><span class="dot"></span>Full Stack • Social Media</span>
+        <h3 class="card-title">FriendTree</h3>
+        <p class="card-desc">A social platform for connecting friends and sharing experiences, featuring real-time messaging, event planning, and community building tools.</p>
+        <div class="card-buttons">
+          <a href="https://friendtree.vercel.app/" target="_blank" class="btn-demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+         
+        </div>
+      </article>
+
+      <!-- Project 8 -->
+      <article class="premium-card reveal" style="transition-delay:0.56s">
+        <div class="card-image">
+          <div class="card-image-bg"></div>
+          <div class="card-image-pattern"></div>
+          <div class="card-image-icon"><i class="fa-solid fa-industry"></i></div>
+        </div>
+        <span class="card-badge"><span class="dot"></span>Full Stack • Business Website</span>
+        <h3 class="card-title">ESWAR Cottage Industries</h3>
+        <p class="card-desc">Responsive business website showcasing premium cottage industry products, company information, and a modern user-friendly interface.</p>
+        <div class="card-buttons">
+          <a href="https://eswar-cottage-industries.vercel.app/" target="_blank" class="btn-demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+         
+        </div>
+      </article>
+
+      <!-- Project 9 -->
+      <article class="premium-card reveal" style="transition-delay:0.64s">
+        <div class="card-image">
+          <div class="card-image-bg"></div>
+          <div class="card-image-pattern"></div>
+          <div class="card-image-icon"><i class="fa-solid fa-rocket"></i></div>
+        </div>
+        <span class="card-badge"><span class="dot"></span>Full Stack • Game</span>
+        <h3 class="card-title">Cosmic Adventure</h3>
+        <p class="card-desc">An exciting space-themed arcade game where players navigate through the cosmos, avoid challenging obstacles, collect rewards, and achieve the highest possible score with smooth animations.</p>
+        <div class="card-buttons">
+          <a href="https://cosmic-rosy-delta.vercel.app/" target="_blank" class="btn-demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+       
+        </div>
+      </article>
+
+      <!-- Project 10 -->
+      <article class="premium-card reveal" style="transition-delay:0.72s">
+        <div class="card-image">
+          <div class="card-image-bg"></div>
+          <div class="card-image-pattern"></div>
+          <div class="card-image-icon"><i class="fa-solid fa-lightbulb"></i></div>
+        </div>
+        <span class="card-badge"><span class="dot"></span>Education • Web App</span>
+        <h3 class="card-title">SkillSphere – Skill Learning Platform</h3>
+        <p class="card-desc">A modern skill development platform designed to help users explore, learn, and enhance technical skills through an organized learning experience with categorized courses and interactive resources.</p>
+        <div class="card-buttons">
+          <a href="https://skillsphere-beta-five.vercel.app/" target="_blank" class="btn-demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+         
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="relative z-10 py-10 px-6 border-t" style="border-color:var(--line);background:rgba(7,10,18,0.6)">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2 font-display font-bold tracking-wider">
+      <span class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">
+        <span class="text-white text-sm">R</span>
+      </span>
+      MARIA KELVIN
+    </div>
+    <p class="text-sm text-gray-500">© <span id="year"></span> MARIA KELVIN R. Crafted with passion & code.</p>
+    <a href="projects.html" class="text-sm text-gray-400 hover:text-blue-400 transition flex items-center gap-2">
+      Back to top <i class="fa-solid fa-arrow-up"></i>
+    </a>
+  </div>
+</footer>
+
+<script>
+  // ====== Scroll reveal ======
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+      }
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+  // ====== Mobile menu ======
+  const menuBtn = document.getElementById('menuBtn');
+  const closeMenu = document.getElementById('closeMenu');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click',()=>mobileMenu.classList.add('open'));
+  closeMenu.addEventListener('click',()=>mobileMenu.classList.remove('open'));
+  document.querySelectorAll('.mobile-link').forEach(l=>{
+    l.addEventListener('click',()=>mobileMenu.classList.remove('open'));
+  });
+
+  // ====== Year ======
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ====== Smooth parallax for blobs ======
+  document.addEventListener('mousemove',e=>{
+    const x = (e.clientX/window.innerWidth - 0.5);
+    const y = (e.clientY/window.innerHeight - 0.5);
+    document.querySelectorAll('.blob').forEach((b,i)=>{
+      const s = (i+1)*15;
+      b.style.transform = `translate(${x*s}px,${y*s}px)`;
+    });
+  });
+</script>
+</body>
+</html>
