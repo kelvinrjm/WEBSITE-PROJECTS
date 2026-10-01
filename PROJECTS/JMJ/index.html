@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="JMJ GHEE — Pure Traditional Ghee. A2 Desi Cow Ghee and Pure Buffalo Ghee, made the authentic way. Order on WhatsApp." />
+  <title>JMJ GHEE — Pure Traditional Ghee</title>
+   <link rel="icon" type="image/x-icon" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ⭐ NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="brand-logo">
+        <img src="logo.png" alt="JMJ GHEE Logo" class="logo-img" />
+        <div class="brand-text">
+          <span class="brand-name">JMJ GHEE</span>
+          <span class="brand-tagline">Pure Ghee</span>
+        </div>
+      </a>
+
+      <nav class="desktop-menu" id="desktop-menu">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#products" class="nav-link">Products</a>
+        <a href="#timeline" class="nav-link">Our Journey</a>
+        <a href="#about" class="nav-link">About Us</a>
+        <a href="#reviews" class="nav-link">Reviews</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle menu" onclick="toggleMenu()">
+        <span class="bar line1"></span>
+        <span class="bar line2"></span>
+        <span class="bar line3"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ⭐ MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="drawer-overlay" onclick="toggleMenu()"></div>
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <img src="logo.png" alt="JMJ GHEE Logo" class="drawer-logo" />
+        <button class="close-drawer-btn" onclick="toggleMenu()">&times;</button>
+      </div>
+      <nav class="mobile-menu-links">
+        <a href="#home" onclick="toggleMenu()"><i class="fas fa-home"></i> Home</a>
+        <a href="#products" onclick="toggleMenu()"><i class="fas fa-jar"></i> Products</a>
+        <a href="#timeline" onclick="toggleMenu()"><i class="fas fa-history"></i> Our Journey</a>
+        <a href="#about" onclick="toggleMenu()"><i class="fas fa-info-circle"></i> About Us</a>
+        <a href="#reviews" onclick="toggleMenu()"><i class="fas fa-star"></i> Reviews</a>
+        <a href="#contact" onclick="toggleMenu()"><i class="fas fa-envelope"></i> Contact Us</a>
+      </nav>
+      <div class="drawer-footer">
+        <p>Order directly on WhatsApp</p>
+        <a href="https://wa.me/919944966440" target="_blank" class="drawer-wa-btn">
+          <i class="fab fa-whatsapp"></i> Chat Now
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⭐ HERO SLIDER -->
+  <section id="home" class="hero-section">
+    <div class="hero-slider">
+      <div class="hero-slide active" style="background-image: url('1.jpeg')">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-badge scroll-reveal">100% Natural &amp; Pure</span>
+          <h1 class="slide-title scroll-reveal">GOLDEN GHEE</h1>
+          <p class="slide-desc scroll-reveal">Made with love using traditional Bilona method. No chemicals, no preservatives — just pure purity.</p>
+          <div class="slide-actions scroll-reveal">
+            <a href="#products" class="btn btn-primary">Shop Now <i class="fas fa-arrow-right"></i></a>
+            <a href="#about" class="btn btn-outline">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-slide" style="background-image: url('2.png')">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-badge">Farm Fresh Quality</span>
+          <h1 class="slide-title">Pure  Ghee</h1>
+          <p class="slide-desc">Rich, aromatic and traditionally prepared. Experience the authentic taste of pure Buffalo Ghee.</p>
+          <div class="slide-actions">
+            <a href="#products" class="btn btn-primary">Order Now <i class="fas fa-arrow-right"></i></a>
+            <a href="#contact" class="btn btn-outline">Contact Us</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-slide" style="background-image: url('group.jpeg')">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-badge">Trusted Since Years</span>
+          <h1 class="slide-title">JMJ GHEE Family</h1>
+          <p class="slide-desc">Generations of trust, quality and authentic flavour. Your family deserves the very best ghee.</p>
+          <div class="slide-actions">
+            <a href="#products" class="btn btn-primary">Our Products <i class="fas fa-arrow-right"></i></a>
+            <a href="#reviews" class="btn btn-outline">Reviews</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="slider-arrow left-arrow" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+    <button class="slider-arrow right-arrow" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+    <div class="slider-dots" id="slider-dots"></div>
+  </section>
+
+  <!-- ⭐ TRUST BADGES -->
+  <section class="trust-section">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-item scroll-reveal">
+          <i class="fas fa-leaf"></i>
+          <span>100% Natural</span>
+        </div>
+        <div class="trust-item scroll-reveal">
+          <i class="fas fa-fire-alt"></i>
+          <span>Traditional Method</span>
+        </div>
+        <div class="trust-item scroll-reveal">
+          <i class="fas fa-truck"></i>
+          <span>Home Delivery</span>
+        </div>
+        <div class="trust-item scroll-reveal">
+          <i class="fas fa-shield-alt"></i>
+          <span>No Preservatives</span>
+        </div>
+        <div class="trust-item scroll-reveal">
+          <i class="fab fa-whatsapp"></i>
+          <span>Order on WhatsApp</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⭐ PRODUCTS SECTION -->
+  <section id="products" class="products-section">
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <span class="sub-title">Our Range</span>
+        <h2>Premium Ghee Products</h2>
+        <p>Handcrafted with care using age-old traditional methods for maximum purity and flavour.</p>
+      </div>
+
+      <div class="products-grid">
+
+        <!-- Product 1: A2 Cow Ghee 200ml -->
+        <div class="product-card scroll-reveal">
+          <div class="product-img-wrap" onclick="openPreview('1.jpeg', ' Ghee — 200ml')">
+            <img src="1.jpeg" alt="Ghee 200ml" class="product-img" />
+            <div class="img-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+            <span class="product-badge">Best Seller</span>
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">pure Ghee</h3>
+            <p class="product-size-label"><i class="fas fa-ruler-horizontal"></i> Pack Size: <strong>200ml</strong></p>
+            <h3>Price: <span>Rs.190</span></h3>
+                <p class="delivery-note">
+        <strong>Note:</strong> Delivery charges are not included in the product price.
+        Delivery charges will be calculated based on your delivery location.
+    </p>
+            <p class="product-desc">Pure ghee made using the traditional Bilona method. Rich in nutrients and full of authentic flavour.</p>
+            <div class="qty-row">
+              <span class="qty-label">Quantity:</span>
+              <div class="qty-control">
+                <button class="qty-btn" onclick="updateQty('a2-cow', -1)"><i class="fas fa-minus"></i></button>
+                <span class="qty-val" id="qty-a2-cow">1</span>
+                <button class="qty-btn" onclick="updateQty('a2-cow', 1)"><i class="fas fa-plus"></i></button>
+              </div>
+            </div>
+            <button class="btn btn-buy" onclick="openCheckout('a2-cow')">
+              <i class="fab fa-whatsapp"></i> Buy Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 2: Buffalo Ghee 500ml -->
+        <div class="product-card scroll-reveal">
+          <div class="product-img-wrap" onclick="openPreview('2.png', 'Pure Ghee — 500ml')">
+            <img src="2.png" alt="Pure Ghee 500ml" class="product-img" />
+            <div class="img-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+            <span class="product-badge badge-gold">Premium</span>
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">Pure Ghee </h3>
+            <p class="product-size-label"><i class="fas fa-ruler-horizontal"></i> Pack Size: <strong>500ml</strong></p>
+            <h3>Price: <span>Rs.499</span></h3>
+                <p class="delivery-note">
+        <strong>Note:</strong> Delivery charges are not included in the product price.
+        Delivery charges will be calculated based on your delivery location .
+    </p>
+            <p class="product-desc">Rich and aromatic pure Ghee. Prepared traditionally with no additives for the most authentic experience.</p>
+            <div class="qty-row">
+              <span class="qty-label">Quantity:</span>
+              <div class="qty-control">
+                <button class="qty-btn" onclick="updateQty('buffalo', -1)"><i class="fas fa-minus"></i></button>
+                <span class="qty-val" id="qty-buffalo">1</span>
+                <button class="qty-btn" onclick="updateQty('buffalo', 1)"><i class="fas fa-plus"></i></button>
+              </div>
+            </div>
+            <button class="btn btn-buy" onclick="openCheckout('buffalo')">
+              <i class="fab fa-whatsapp"></i> Buy Now
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ⭐ TIMELINE SECTION — OUR JOURNEY -->
+  <section id="timeline" class="timeline-section">
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <span class="sub-title">Our Journey</span>
+        <h2>The Story of JMJ GHEE</h2>
+        <p>From humble beginnings to a trusted name — every step taken with purity and passion.</p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item scroll-reveal">
+          <div class="timeline-dot">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-year">Chapter 1</div>
+            <h3 class="timeline-title">JMJ Ghee</h3>
+            <p class="timeline-desc">The journey began with a simple dream — to bring pure, authentic ghee to every household. JMJ Ghee was born from generations of traditional knowledge, crafted with love using the finest cow milk and time-honoured recipes.</p>
+            <div class="timeline-tags">
+              <span><i class="fas fa-leaf"></i> Pure Tradition</span>
+              <span><i class="fas fa-heart"></i> Made with Love</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item scroll-reveal">
+          <div class="timeline-dot">
+            <i class="fas fa-crown"></i>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-year">Chapter 2</div>
+            <h3 class="timeline-title">Golden Cow Ghee</h3>
+            <p class="timeline-desc">Growing with trust and quality, we introduced Golden Cow Ghee — a premium line crafted from hand-picked Cow milk. Rich in nutrients, deeply aromatic, and golden in colour, it quickly became the favourite of health-conscious families across Tamil Nadu.</p>
+            <div class="timeline-tags">
+              <span><i class="fas fa-award"></i> Premium Quality</span>
+              <span><i class="fas fa-star"></i> A2 Milk</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item scroll-reveal">
+          <div class="timeline-dot">
+            <i class="fas fa-gem"></i>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-year">Chapter 3</div>
+            <h3 class="timeline-title">Premium Ghee</h3>
+            <p class="timeline-desc">Today, JMJ GHEE stands as a symbol of premium purity. Our Premium Ghee range — including 200ml Cow Ghee and 500ml Buffalo Ghee — is crafted to the highest standards, delivering the finest ghee experience to families across India through convenient home delivery.</p>
+            <div class="timeline-tags">
+              <span><i class="fas fa-truck"></i> Pan-India Delivery</span>
+              <span><i class="fas fa-shield-alt"></i> Zero Preservatives</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ⭐ ABOUT SECTION -->
+  <section id="about" class="about-section">
+    <div class="container about-grid">
+      <div class="about-img-col scroll-reveal">
+        <div class="about-img-frame">
+          <img src="group.jpeg" alt="JMJ GHEE Team" class="about-img" />
+          <div class="about-img-badge">
+            <i class="fas fa-award"></i>
+            <span>Trusted Quality</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-text-col scroll-reveal">
+        <span class="sub-title">Our Story</span>
+        <h2>The JMJ GHEE Difference</h2>
+        <p>At JMJ GHEE, we believe in delivering nothing but the purest, most authentic ghee straight to your doorstep. Our ghee is made using traditional methods passed down through generations, ensuring every jar carries the richness of real, natural ingredients.</p>
+        <p>We source our milk from healthy, grass-fed cows and buffaloes, and process it in our clean facility using time-honoured techniques — with no shortcuts, no chemicals, and absolutely no preservatives.</p>
+        <div class="about-features">
+          <div class="about-feat-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Sourced from healthy, grass-fed animals</span>
+          </div>
+          <div class="about-feat-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Traditional slow-cooking process</span>
+          </div>
+          <div class="about-feat-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Zero chemicals or preservatives</span>
+          </div>
+          <div class="about-feat-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Pan-India home delivery available</span>
+          </div>
+        </div>
+        <a href="#contact" class="btn btn-primary">Get In Touch <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⭐ REVIEWS SECTION -->
+  <section id="reviews" class="reviews-section">
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <span class="sub-title">What Customers Say</span>
+        <h2>Loved by Families</h2>
+        <p>Real reviews from real customers across India who trust JMJ GHEE every day.</p>
+      </div>
+      <div class="reviews-grid">
+
+        <div class="review-card scroll-reveal">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"The Cow Ghee from JMJ GHEE is absolutely divine. The aroma alone tells you it's pure and authentic. My family has never tasted better ghee!"</p>
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">P</div>
+            <div>
+              <strong>Priya Sharma</strong>
+              <span>Chennai, Tamil Nadu</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card scroll-reveal">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"Ordered  Ghee for the first time and I'm completely hooked! Rich, golden and smells like home. Delivery was super fast too. Highly recommend!"</p>
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">R</div>
+            <div>
+              <strong>Rajan Murugesan</strong>
+              <span>Karur, Tamil Nadu</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card scroll-reveal">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"I've tried many brands but JMJ GHEE tops them all. You can feel the difference in quality immediately. Will keep ordering!"</p>
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">A</div>
+            <div>
+              <strong>Anitha Krishnan</strong>
+              <span>Coimbatore, Tamil Nadu</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ⭐ CONTACT SECTION — Info Only, No Form -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <span class="sub-title">Connect with Us</span>
+        <h2>How to Find Us</h2>
+        <p>Ready to experience true purity? Order directly on WhatsApp or reach out anytime. We ship throughout India.</p>
+      </div>
+
+      <div class="contact-cards-grid">
+
+        <div class="contact-card scroll-reveal">
+          <div class="contact-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <h4>Location</h4>
+          <p>JMJ GHEE , Virudhunagar,<br> Tamil Nadu - 626001</p>
+        </div>
+
+        <div class="contact-card scroll-reveal">
+          <div class="contact-card-icon"><i class="fab fa-whatsapp"></i></div>
+          <h4>WhatsApp / Phone</h4>
+          <p>+91 99449 66440</p>
+          <a href="https://wa.me/919944966440" target="_blank" class="contact-card-btn">
+            <i class="fab fa-whatsapp"></i> Chat Now
+          </a>
+        </div>
+
+        <div class="contact-card scroll-reveal">
+          <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
+          <h4>Email Us</h4>
+          <p>srexjoy@gmail.com</p>
+          <a href="mailto:srexjoy@gmail.com" class="contact-card-btn">
+            <i class="fas fa-envelope"></i> Send Mail
+          </a>
+        </div>
+
+        <div class="contact-card scroll-reveal">
+          <div class="contact-card-icon"><i class="fas fa-clock"></i></div>
+          <h4>Open Hours</h4>
+          <p>Open 24/7, All Day</p>
+          <div class="social-links" style="margin-top: 14px; justify-content: center;">
+            <a href="https://www.instagram.com/jmjghee/" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/919944966440" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ⭐ FOOTER -->
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="footer-logo">
+          <img src="logo.png" alt="JMJ GHEE Logo" />
+          <span>JMJ GHEE</span>
+        </a>
+        <p>Bringing you the finest clarified butter (Ghee) for wellness, vitality, and authentic culinary pleasure.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#timeline">Our Journey</a>
+        <a href="#about">About Us</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-hours">
+        <h4>We Are Available</h4>
+        <p><i class="fas fa-clock"></i> Open 24/7, All Day</p>
+        <p><i class="fab fa-whatsapp"></i> WhatsApp: +91 9944966440</p>
+        <p><i class="fas fa-envelope"></i> srexjoy@gmail.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-container">
+        <p>&copy; 2026 JMJ GHEE. All Rights Reserved. Crafted for Purity.</p>
+        <a href="#home" class="scroll-top"><i class="fas fa-chevron-up"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ⭐ IMAGE PREVIEW POPUP -->
+  <div id="previewBox" class="preview-box" onclick="closePreview()">
+    <div class="preview-inner">
+      <button class="preview-close" onclick="closePreview()">&times;</button>
+      <img id="previewImg" src="" alt="Ghee Preview" />
+      <div id="previewCaption" class="preview-caption"></div>
+    </div>
+  </div>
+
+  <!-- ⭐ WHATSAPP CHECKOUT MODAL -->
+  <div id="checkoutModal" class="checkout-modal">
+    <div class="modal-overlay" onclick="closeCheckout()"></div>
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3><i class="fab fa-whatsapp font-gold"></i> Complete WhatsApp Order</h3>
+        <button class="close-modal-btn" onclick="closeCheckout()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="order-summary-box">
+          <h4>Order Summary</h4>
+          <div class="summary-row">
+            <span>Product:</span>
+            <strong id="summary-name">Cow Ghee</strong>
+          </div>
+          <div class="summary-row">
+            <span>Size:</span>
+            <strong id="summary-size">200ml</strong>
+          </div>
+          <div class="summary-row">
+            <span>Quantity:</span>
+            <strong id="summary-qty">1</strong>
+          </div>
+        </div>
+
+        <form id="whatsappForm" onsubmit="sendWhatsAppOrder(event)">
+          <div class="form-group">
+            <label for="cust-name">Your Full Name <span class="required">*</span></label>
+            <input type="text" id="cust-name" required placeholder="Enter name for shipping" />
+          </div>
+         
+          <div class="form-group">
+            <label for="cust-address">Delivery Address &amp; Pincode <span class="required">*</span></label>
+            <textarea id="cust-address" rows="3" required placeholder="Enter full address where ghee should be sent"></textarea>
+          </div>
+          <button type="submit" class="whatsapp-submit-btn">
+            <i class="fab fa-whatsapp"></i> Confirm &amp; Order via WhatsApp
+          </button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <p><i class="fas fa-lock"></i> Your information is safely passed to WhatsApp chat directly.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
